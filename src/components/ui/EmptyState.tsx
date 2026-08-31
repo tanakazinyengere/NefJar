@@ -2,45 +2,143 @@ import { motion } from 'framer-motion'
 import Button from './Button'
 import type { ReactNode } from 'react'
 
-type EmptyStateType = 'first-use' | 'creation' | 'collection' | 'search' | 'filter' | 'permission' | 'offline' | 'completed' | 'error' | 'temporary'
+// Per Empty State Mastery System — 10 distinct empty state types
+type EmptyStateType =
+  | 'first-use'       // Type A: User has never used the feature
+  | 'creation'        // Type B: User needs to create something
+  | 'collection'      // Type C: Place for saved content, nothing saved yet
+  | 'search'          // Search returned zero results
+  | 'filter'          // Filters exclude all results
+  | 'permission'      // Content requires permission
+  | 'offline'         // Network unavailable
+  | 'completed'       // User has completed everything (positive empty)
+  | 'error'           // Request failed (NOT an empty state — different treatment)
+  | 'temporary'       // Process in progress, content loading
 
 interface EmptyStateProps {
   type?: EmptyStateType
   icon?: ReactNode
+  /** Eyebrow label above the title — identifies the category */
+  eyebrow?: string
   title: string
   description: string
   instruction?: string
   primaryAction?: { label: string; onClick: () => void; icon?: ReactNode }
   secondaryAction?: { label: string; onClick: () => void }
+  tertiaryAction?: { label: string; onClick: () => void }
   exampleContent?: ReactNode
   className?: string
 }
 
-const typeStyles: Record<EmptyStateType, { bg: string; iconBg: string; iconColor: string }> = {
-  'first-use': { bg: 'bg-accent-light/30', iconBg: 'bg-accent-light', iconColor: 'text-accent' },
-  creation: { bg: 'bg-accent-light/30', iconBg: 'bg-accent-light', iconColor: 'text-accent' },
-  collection: { bg: 'bg-surface-hover', iconBg: 'bg-surface-hover', iconColor: 'text-text-tertiary' },
-  search: { bg: 'bg-warning-light/30', iconBg: 'bg-warning-light', iconColor: 'text-warning' },
-  filter: { bg: 'bg-warning-light/30', iconBg: 'bg-warning-light', iconColor: 'text-warning' },
-  permission: { bg: 'bg-danger-light/30', iconBg: 'bg-danger-light', iconColor: 'text-danger' },
-  offline: { bg: 'bg-surface-hover', iconBg: 'bg-surface-hover', iconColor: 'text-text-tertiary' },
-  completed: { bg: 'bg-success-light/30', iconBg: 'bg-success-light', iconColor: 'text-success' },
-  error: { bg: 'bg-danger-light/30', iconBg: 'bg-danger-light', iconColor: 'text-danger' },
-  temporary: { bg: 'bg-surface-hover', iconBg: 'bg-surface-hover', iconColor: 'text-text-tertiary' },
+// Semantic color mapping per COLOR SYSTEM spec
+const typeConfig: Record<EmptyStateType, {
+  bg: string
+  iconBg: string
+  iconColor: string
+  eyebrow: string
+  accentBorder: string
+}> = {
+  'first-use': {
+    bg: 'bg-status-info-surface',
+    iconBg: 'bg-status-info-surface',
+    iconColor: 'text-status-info',
+    eyebrow: 'text-status-info',
+    accentBorder: 'border-status-info-border',
+  },
+  creation: {
+    bg: 'bg-status-info-surface',
+    iconBg: 'bg-status-info-surface',
+    iconColor: 'text-status-info',
+    eyebrow: 'text-status-info',
+    accentBorder: 'border-status-info-border',
+  },
+  collection: {
+    bg: 'bg-bg-surface-hover',
+    iconBg: 'bg-bg-surface-hover',
+    iconColor: 'text-text-tertiary',
+    eyebrow: 'text-text-tertiary',
+    accentBorder: 'border-border-default',
+  },
+  search: {
+    bg: 'bg-status-warning-surface',
+    iconBg: 'bg-status-warning-surface',
+    iconColor: 'text-status-warning',
+    eyebrow: 'text-status-warning',
+    accentBorder: 'border-status-warning-border',
+  },
+  filter: {
+    bg: 'bg-status-warning-surface',
+    iconBg: 'bg-status-warning-surface',
+    iconColor: 'text-status-warning',
+    eyebrow: 'text-status-warning',
+    accentBorder: 'border-status-warning-border',
+  },
+  permission: {
+    bg: 'bg-status-error-surface',
+    iconBg: 'bg-status-error-surface',
+    iconColor: 'text-status-error',
+    eyebrow: 'text-status-error',
+    accentBorder: 'border-status-error-border',
+  },
+  offline: {
+    bg: 'bg-bg-surface-hover',
+    iconBg: 'bg-bg-surface-hover',
+    iconColor: 'text-text-tertiary',
+    eyebrow: 'text-text-tertiary',
+    accentBorder: 'border-border-default',
+  },
+  completed: {
+    bg: 'bg-status-success-surface',
+    iconBg: 'bg-status-success-surface',
+    iconColor: 'text-status-success',
+    eyebrow: 'text-status-success',
+    accentBorder: 'border-status-success-border',
+  },
+  error: {
+    bg: 'bg-status-error-surface',
+    iconBg: 'bg-status-error-surface',
+    iconColor: 'text-status-error',
+    eyebrow: 'text-status-error',
+    accentBorder: 'border-status-error-border',
+  },
+  temporary: {
+    bg: 'bg-bg-surface-hover',
+    iconBg: 'bg-bg-surface-hover',
+    iconColor: 'text-text-tertiary',
+    eyebrow: 'text-text-tertiary',
+    accentBorder: 'border-border-default',
+  },
+}
+
+// Contextual eyebrow labels per state
+const defaultEyebrows: Record<EmptyStateType, string> = {
+  'first-use': 'Getting started',
+  creation: 'Create your first',
+  collection: 'Nothing here yet',
+  search: 'No results found',
+  filter: 'No matches with these filters',
+  permission: 'Access required',
+  offline: 'You\'re offline',
+  completed: 'All caught up',
+  error: 'Something went wrong',
+  temporary: 'Loading...',
 }
 
 export default function EmptyState({
   type = 'creation',
   icon,
+  eyebrow,
   title,
   description,
   instruction,
   primaryAction,
   secondaryAction,
+  tertiaryAction,
   exampleContent,
   className = '',
 }: EmptyStateProps) {
-  const style = typeStyles[type]
+  const config = typeConfig[type]
+  const displayEyebrow = eyebrow || defaultEyebrows[type]
 
   return (
     <motion.div
@@ -48,27 +146,41 @@ export default function EmptyState({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.4, ease: [0.4, 0, 0.2, 1] }}
       className={`flex flex-col items-center justify-center py-16 px-8 ${className}`}
+      role="status"
+      aria-label={`${title}. ${description}`}
     >
       {icon && (
         <motion.div
           initial={{ scale: 0.8, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
-          transition={{ delay: 0.1, duration: 0.3 }}
-          className={`w-16 h-16 rounded-2xl ${style.iconBg} flex items-center justify-center mb-5`}
+          transition={{ delay: 0.1, duration: 0.3, type: 'spring', stiffness: 300, damping: 25 }}
+          className={`w-16 h-16 rounded-2xl ${config.iconBg} flex items-center justify-center mb-5`}
         >
-          <div className={style.iconColor}>{icon}</div>
+          <div className={config.iconColor}>{icon}</div>
         </motion.div>
       )}
 
-      <motion.h3
+      {/* Eyebrow */}
+      <motion.span
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ delay: 0.12 }}
+        className={`text-[11px] font-semibold uppercase tracking-wider ${config.eyebrow} mb-2`}
+      >
+        {displayEyebrow}
+      </motion.span>
+
+      {/* Title — semantic heading for accessibility */}
+      <motion.h2
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ delay: 0.15 }}
         className="text-[18px] font-semibold text-text-primary text-center mb-2"
       >
         {title}
-      </motion.h3>
+      </motion.h2>
 
+      {/* Description */}
       <motion.p
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
@@ -78,6 +190,7 @@ export default function EmptyState({
         {description}
       </motion.p>
 
+      {/* Instruction — micro-instruction per spec */}
       {instruction && (
         <motion.p
           initial={{ opacity: 0 }}
@@ -89,6 +202,7 @@ export default function EmptyState({
         </motion.p>
       )}
 
+      {/* Example content — "Show Me" principle */}
       {exampleContent && (
         <motion.div
           initial={{ opacity: 0, y: 8 }}
@@ -100,12 +214,13 @@ export default function EmptyState({
         </motion.div>
       )}
 
-      {(primaryAction || secondaryAction) && (
+      {/* CTA hierarchy — primary, secondary, tertiary */}
+      {(primaryAction || secondaryAction || tertiaryAction) && (
         <motion.div
           initial={{ opacity: 0, y: 8 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.35 }}
-          className="flex items-center gap-3 mt-6"
+          className="flex flex-wrap items-center justify-center gap-3 mt-6"
         >
           {primaryAction && (
             <Button onClick={primaryAction.onClick} size="md">
@@ -117,6 +232,14 @@ export default function EmptyState({
             <Button variant="secondary" onClick={secondaryAction.onClick} size="md">
               {secondaryAction.label}
             </Button>
+          )}
+          {tertiaryAction && (
+            <button
+              onClick={tertiaryAction.onClick}
+              className="text-[13px] text-text-link hover:underline cursor-pointer btn-touch-target"
+            >
+              {tertiaryAction.label}
+            </button>
           )}
         </motion.div>
       )}

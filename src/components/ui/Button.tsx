@@ -11,9 +11,9 @@ interface ButtonProps {
 }
 
 const variants = {
-  primary: 'bg-text-primary text-white hover:bg-[#1a1d24]',
-  secondary: 'bg-surface border border-border text-text-primary hover:bg-surface-hover hover:border-border',
-  ghost: 'bg-transparent text-text-secondary hover:text-text-primary hover:bg-surface-hover',
+  primary: 'bg-action-primary text-white hover:bg-action-primary-hover active:bg-action-primary-active',
+  secondary: 'bg-bg-surface border border-border-default text-text-primary hover:bg-bg-surface-hover hover:border-border-strong',
+  ghost: 'bg-transparent text-text-secondary hover:text-text-primary hover:bg-bg-surface-hover',
 }
 
 const sizes = {

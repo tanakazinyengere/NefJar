@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NefJar Logo Variations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #F7F8FA; padding: 40px; color: #111318; }
+    h1 { text-align: center; margin-bottom: 8px; font-size: 24px; font-weight: 700; }
+    .subtitle { text-align: center; color: #69707D; margin-bottom: 40px; font-size: 14px; }
+    .grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 24px; max-width: 900px; margin: 0 auto; }
+    .card {
+      background: white; border-radius: 16px; padding: 40px;
+      border: 1px solid #E7E9ED; display: flex; flex-direction: column;
+      align-items: center; gap: 20px; transition: box-shadow 0.2s;
+    }
+    .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .card.dark { background: #0F1117; border-color: #2A2D38; }
+    .label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #69707D; }
+    .dark .label { color: #9CA3AF; }
+    .num { font-size: 13px; font-weight: 600; color: #2563EB; }
+    .row { display: flex; gap: 40px; align-items: center; }
+  </style>
+</head>
+<body>
+  <h1>NefJar Logo Variations</h1>
+  <p class="subtitle">Choose the direction you like best. Each works in light and dark mode.</p>
+
+  <div class="grid">
+
+    <!-- LOGO 1: Minimal stack/lines -->
+    <div class="card">
+      <span class="num">01</span>
+      <div class="row">
+        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="8" width="32" height="32" rx="8" fill="#111318"/>
+          <path d="M10 17h14v2.5H10zM10 23h10v2.5H10zM10 29h14v2.5H10z" fill="white" opacity="0.9"/>
+          <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+        </svg>
+      </div>
+      <span class="label">Stacked Lines</span>
+    </div>
+
+    <!-- LOGO 2: Connected nodes -->
+    <div class="card">
+      <span class="num">02</span>
+      <div class="row">
+        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="8" width="32" height="32" rx="8" fill="#2563EB"/>
+          <circle cx="12" cy="20" r="3" fill="white" opacity="0.9"/>
+          <circle cx="24" cy="20" r="3" fill="white" opacity="0.9"/>
+          <circle cx="18" cy="30" r="3" fill="white" opacity="0.9"/>
+          <path d="M12 20l6 10M24 20l-6 10" stroke="white" stroke-width="1.5" opacity="0.6"/>
+          <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+        </svg>
+      </div>
+      <span class="label">Connected Nodes</span>
+    </div>
+
+    <!-- LOGO 3: Arrow/flow -->
+    <div class="card">
+      <span class="num">03</span>
+      <div class="row">
+        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="8" width="32" height="32" rx="8" fill="#111318"/>
+          <path d="M10 24h8l4-5 4 5h4" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M22 19v10" stroke="#2563EB" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
+          <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+        </svg>
+      </div>
+      <span class="label">Flow Arrow</span>
+    </div>
+
+    <!-- LOGO 4: Shield/link -->
+    <div class="card">
+      <span class="num">04</span>
+      <div class="row">
+        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="8" width="32" height="32" rx="8" fill="#111318"/>
+          <path d="M16 12v6c0 5.5 4.5 10 4.5 10s4.5-4.5 4.5-10v-6" stroke="#2563EB" stroke-width="2" fill="none" stroke-linecap="round"/>
+          <circle cx="16" cy="16" r="2" fill="#2563EB"/>
+          <circle cx="24.5" cy="16" r="2" fill="#2563EB"/>
+          <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+        </svg>
+      </div>
+      <span class="label">Shield Link</span>
+    </div>
+
+    <!-- LOGO 5: Pulse/monitor -->
+    <div class="card">
+      <span class="num">05</span>
+      <div class="row">
+        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="8" width="32" height="32" rx="8" fill="#16A34A"/>
+          <path d="M8 24h4l3-6 4 12 3-8 2 2h6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+          <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+        </svg>
+      </div>
+      <span class="label">Pulse Monitor</span>
+    </div>
+
+    <!-- LOGO 6: N monogram -->
+    <div class="card">
+      <span class="num">06</span>
+      <div class="row">
+        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="8" width="32" height="32" rx="16" fill="#111318"/>
+          <text x="18" y="31" font-family="Inter" font-weight="800" font-size="18" fill="white" text-anchor="middle">N</text>
+          <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+        </svg>
+      </div>
+      <span class="label">Circle Monogram</span>
+    </div>
+
+    <!-- LOGO 7: Diagnostic crosshair -->
+    <div class="card">
+      <span class="num">07</span>
+      <div class="row">
+        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="8" width="32" height="32" rx="8" fill="#111318"/>
+          <circle cx="18" cy="24" r="8" stroke="#2563EB" stroke-width="2" fill="none"/>
+          <circle cx="18" cy="24" r="3" fill="#2563EB"/>
+          <line x1="18" y1="13" x2="18" y2="17" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="18" y1="31" x2="18" y2="35" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="7" y1="24" x2="11" y2="24" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
+          <line x1="25" y1="24" x2="29" y2="24" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
+          <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+        </svg>
+      </div>
+      <span class="label">Diagnostic Crosshair</span>
+    </div>
+
+    <!-- LOGO 8: API brackets -->
+    <div class="card">
+      <span class="num">08</span>
+      <div class="row">
+        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="8" width="32" height="32" rx="8" fill="#111318"/>
+          <path d="M14 16v6c0 2-3 3-3 3s3 1 3 3v6" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <path d="M24 16v6c0 2 3 3 3 3s-3 1-3 3v6" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+        </svg>
+      </div>
+      <span class="label">API Brackets</span>
+    </div>
+
+    <!-- LOGO 9: Layered squares -->
+    <div class="card">
+      <span class="num">09</span>
+      <div class="row">
+        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="6" y="10" width="22" height="22" rx="4" fill="#2563EB" opacity="0.3"/>
+          <rect x="10" y="14" width="22" height="22" rx="4" fill="#2563EB" opacity="0.6"/>
+          <rect x="14" y="18" width="22" height="22" rx="4" fill="#111318"/>
+          <path d="M19 25h12M19 29h8" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+          <text x="48" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+        </svg>
+      </div>
+      <span class="label">Layered Depth</span>
+    </div>
+
+    <!-- LOGO 10: Waveform/signal -->
+    <div class="card">
+      <span class="num">10</span>
+      <div class="row">
+        <svg width="180" height="48" viewBox="0 0 180 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect x="2" y="8" width="32" height="32" rx="8" fill="#111318"/>
+          <rect x="9" y="21" width="2.5" height="6" rx="1" fill="#2563EB" opacity="0.4"/>
+          <rect x="13" y="18" width="2.5" height="12" rx="1" fill="#2563EB" opacity="0.6"/>
+          <rect x="17" y="15" width="2.5" height="18" rx="1" fill="#2563EB" opacity="0.8"/>
+          <rect x="21" y="18" width="2.5" height="12" rx="1" fill="#2563EB"/>
+          <rect x="25" y="21" width="2.5" height="6" rx="1" fill="#2563EB" opacity="0.6"/>
+          <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+        </svg>
+      </div>
+      <span class="label">Signal Wave</span>
+    </div>
+
+    <!-- DARK MODE VARIANTS -->
+    <div class="card dark" style="grid-column: span 2;">
+      <span class="label" style="margin-bottom: 8px;">Dark Mode Previews</span>
+      <div style="display: flex; gap: 48px; flex-wrap: wrap; justify-content: center;">
+        <!-- Dark: 01 -->
+        <svg width="160" height="40" viewBox="0 0 160 40" fill="none">
+          <rect x="0" y="4" width="28" height="28" rx="7" fill="#E8EAED"/>
+          <path d="M7 13h12v2H7zM7 18h8v2H7zM7 23h12v2H7z" fill="#0F1117" opacity="0.85"/>
+          <text x="38" y="24" font-family="Inter" font-weight="700" font-size="17" fill="#E8EAED">NefJar</text>
+        </svg>
+        <!-- Dark: 05 -->
+        <svg width="160" height="40" viewBox="0 0 160 40" fill="none">
+          <rect x="0" y="4" width="28" height="28" rx="7" fill="#16A34A"/>
+          <path d="M5 18h4l3-5 4 10 3-7 2 2h5" stroke="white" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+          <text x="38" y="24" font-family="Inter" font-weight="700" font-size="17" fill="#E8EAED">NefJar</text>
+        </svg>
+        <!-- Dark: 06 -->
+        <svg width="160" height="40" viewBox="0 0 160 40" fill="none">
+          <rect x="0" y="4" width="28" height="28" rx="14" fill="#E8EAED"/>
+          <text x="14" y="24" font-family="Inter" font-weight="800" font-size="15" fill="#0F1117" text-anchor="middle">N</text>
+          <text x="38" y="24" font-family="Inter" font-weight="700" font-size="17" fill="#E8EAED">NefJar</text>
+        </svg>
+        <!-- Dark: 10 -->
+        <svg width="160" height="40" viewBox="0 0 160 40" fill="none">
+          <rect x="0" y="4" width="28" height="28" rx="7" fill="#1E2130"/>
+          <rect x="5" y="16" width="2.5" height="5" rx="1" fill="#60A5FA" opacity="0.4"/>
+          <rect x="9" y="14" width="2.5" height="9" rx="1" fill="#60A5FA" opacity="0.6"/>
+          <rect x="13" y="11" width="2.5" height="14" rx="1" fill="#60A5FA" opacity="0.8"/>
+          <rect x="17" y="14" width="2.5" height="9" rx="1" fill="#60A5FA"/>
+          <rect x="21" y="16" width="2.5" height="5" rx="1" fill="#60A5FA" opacity="0.6"/>
+          <text x="38" y="24" font-family="Inter" font-weight="700" font-size="17" fill="#E8EAED">NefJar</text>
+        </svg>
+      </div>
+    </div>
+
+  </div>
+</body>
+</html>

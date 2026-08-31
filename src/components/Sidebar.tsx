@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { NavLink, useLocation } from 'react-router-dom'
+import { NavLink, useLocation, useNavigate } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import {
   OverviewIcon,
@@ -85,6 +85,7 @@ const bottomNav: NavItem[] = [
 
 export default function Sidebar() {
   const location = useLocation()
+  const navigate = useNavigate()
   const [collapsed, setCollapsed] = useState<Record<string, boolean>>({})
 
   const toggleSection = (label: string) => {
@@ -98,9 +99,13 @@ export default function Sidebar() {
 
   return (
     <aside className="w-[228px] min-w-[228px] h-screen bg-surface border-r border-border flex flex-col overflow-hidden">
-      {/* Logo */}
+      {/* Logo — Click to go home (Overview) */}
       <div className="h-14 flex items-center px-5 border-b border-border">
-        <div className="flex items-center gap-2.5">
+        <button
+          onClick={() => navigate('/')}
+          className="flex items-center gap-2.5 cursor-pointer btn-touch-target -ml-1 px-1 py-1 rounded-md hover:bg-bg-surface-hover transition-colors"
+          aria-label="Go to Overview"
+        >
           <div className="w-7 h-7 bg-text-primary rounded-lg flex items-center justify-center">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
               <path d="M3 4h10v2H3zM3 8h7v2H3zM3 12h10v2H3z" fill="white" opacity="0.9"/>
@@ -109,7 +114,7 @@ export default function Sidebar() {
           <span className="text-[15px] font-semibold text-text-primary tracking-tight">
             NefJar
           </span>
-        </div>
+        </button>
       </div>
 
       {/* Navigation */}

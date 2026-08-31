@@ -64,7 +64,7 @@ const methodColors: Record<string, string> = {
   GET: 'bg-success-light text-success',
   POST: 'bg-accent-light text-accent',
   DELETE: 'bg-danger-light text-danger',
-  PERMISSION: 'bg-[#F3E8FF] text-[#7C3AED]',
+  PERMISSION: 'bg-status-info-surface text-status-info',
 }
 
 export default function Migrations() {

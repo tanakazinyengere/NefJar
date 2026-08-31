@@ -51,7 +51,7 @@ const methodColors: Record<string, string> = {
   POST: 'bg-accent-light text-accent',
   PUT: 'bg-warning-light text-warning',
   DELETE: 'bg-danger-light text-danger',
-  PATCH: 'bg-[#F3E8FF] text-[#7C3AED]',
+  PATCH: 'bg-status-info-surface text-status-info',
 }
 
 export default function Explorer() {

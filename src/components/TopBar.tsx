@@ -1,6 +1,6 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { useNavigate } from 'react-router-dom'
+import { useNavigate, useLocation } from 'react-router-dom'
 import {
   ChevronIcon,
   BellIcon,
@@ -15,8 +15,39 @@ interface TopBarProps {
   healthScore?: number
 }
 
+// Section parent mapping: which route is the "home" of each section
+const sectionParents: Record<string, string> = {
+  '/build/connection': '/build/explorer',
+  '/build/explorer': '/build/connection',
+  '/build/simulator': '/build/connection',
+  '/test/suites': '/test/webhooks',
+  '/test/webhooks': '/test/suites',
+  '/monitor/health': '/monitor/api',
+  '/monitor/api': '/monitor/health',
+  '/monitor/versions': '/monitor/health',
+  '/monitor/alerts': '/monitor/health',
+  '/analysis/diagnostics': '/analysis/errors',
+  '/analysis/errors': '/analysis/diagnostics',
+  '/analysis/migrations': '/analysis/diagnostics',
+  '/ai/claude': '/ai/mcp',
+  '/ai/mcp': '/ai/claude',
+  '/settings': '/',
+}
+
+// Routes that are "tab roots" (first item in a section) — no back needed
+const tabRoots = new Set([
+  '/',
+  '/build/connection',
+  '/test/suites',
+  '/monitor/health',
+  '/analysis/diagnostics',
+  '/ai/claude',
+  '/settings',
+])
+
 export default function TopBar({ healthScore = 94 }: TopBarProps) {
   const navigate = useNavigate()
+  const location = useLocation()
   const [showProjectDropdown, setShowProjectDropdown] = useState(false)
   const [selectedProject, setSelectedProject] = useState('My LinkedIn App')
   const [selectedEnv, setSelectedEnv] = useState<'Development' | 'Production'>('Development')
@@ -27,10 +58,26 @@ export default function TopBar({ healthScore = 94 }: TopBarProps) {
     }
     return 'light'
   })
-  const [canGoBack, setCanGoBack] = useState(false)
 
   const projects = ['My LinkedIn App', 'Recruitment Dashboard', 'Social Scheduler']
   const environments: ('Development' | 'Production')[] = ['Development', 'Production']
+
+  // Tab-specific back: determine where to go back to
+  const tabBackTarget = useMemo(() => {
+    const path = location.pathname
+    // If we're on the overview (home), no back
+    if (path === '/') return null
+    // If we're on a tab root (first item in section), go to overview
+    if (tabRoots.has(path)) return '/'
+    // Otherwise, find the section parent
+    return sectionParents[path] || '/'
+  }, [location.pathname])
+
+  const goBack = () => {
+    if (tabBackTarget) {
+      navigate(tabBackTarget)
+    }
+  }
 
   // Theme management
   const toggleTheme = useCallback(() => {
@@ -38,7 +85,6 @@ export default function TopBar({ healthScore = 94 }: TopBarProps) {
       const next = prev === 'light' ? 'dark' : 'light'
       localStorage.setItem('nefjar-theme', next)
       document.documentElement.setAttribute('data-theme', next)
-      // Add transition class for smooth theme change
       document.documentElement.classList.add('theme-transition')
       setTimeout(() => document.documentElement.classList.remove('theme-transition'), 400)
       return next
@@ -49,22 +95,6 @@ export default function TopBar({ healthScore = 94 }: TopBarProps) {
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
   }, [theme])
-
-  // Track browser history for back button
-  useEffect(() => {
-    setCanGoBack(window.history.length > 1)
-    const handlePopState = () => {
-      setCanGoBack(window.history.length > 1)
-    }
-    window.addEventListener('popstate', handlePopState)
-    return () => window.removeEventListener('popstate', handlePopState)
-  }, [])
-
-  const goBack = () => {
-    if (canGoBack) {
-      navigate(-1)
-    }
-  }
 
   const getHealthColor = (score: number) => {
     if (score >= 90) return 'text-status-success'
@@ -77,23 +107,26 @@ export default function TopBar({ healthScore = 94 }: TopBarProps) {
             style={{ position: 'relative', zIndex: 'var(--layer-sticky)' }}>
       {/* Left: Back button + Project selector */}
       <div className="flex items-center gap-2">
-        {/* Back button — post-click lifecycle: immediate navigation recovery */}
-        <motion.button
-          whileHover={canGoBack ? { scale: 1.05 } : undefined}
-          whileTap={canGoBack ? { scale: 0.95 } : undefined}
-          onClick={goBack}
-          disabled={!canGoBack}
-          aria-label="Go back"
-          className={`flex items-center justify-center w-8 h-8 rounded-md transition-colors btn-touch-target ${
-            canGoBack
-              ? 'text-text-secondary hover:text-text-primary hover:bg-bg-surface-hover cursor-pointer'
-              : 'text-text-disabled cursor-not-allowed'
-          }`}
-        >
-          <ArrowLeftIcon size={16} />
-        </motion.button>
+        {/* Tab-specific back button — only shows when not on overview */}
+        <AnimatePresence>
+          {tabBackTarget && (
+            <motion.button
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.8 }}
+              transition={{ duration: 0.15 }}
+              whileHover={{ scale: 1.08 }}
+              whileTap={{ scale: 0.92 }}
+              onClick={goBack}
+              aria-label="Go back"
+              className="flex items-center justify-center w-8 h-8 rounded-md text-text-secondary hover:text-text-primary hover:bg-bg-surface-hover transition-colors btn-touch-target cursor-pointer"
+            >
+              <ArrowLeftIcon size={16} />
+            </motion.button>
+          )}
+        </AnimatePresence>
 
-        <div className="w-px h-4 bg-border-default" />
+        {tabBackTarget && <div className="w-px h-4 bg-border-default" />}
 
         <div className="relative">
           <button
@@ -193,7 +226,7 @@ export default function TopBar({ healthScore = 94 }: TopBarProps) {
 
         <div className="w-px h-4 bg-border-default mx-1" />
 
-        {/* Dark mode toggle — premium motion touch */}
+        {/* Dark mode toggle */}
         <motion.button
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.92 }}
@@ -226,7 +259,7 @@ export default function TopBar({ healthScore = 94 }: TopBarProps) {
           </AnimatePresence>
         </motion.button>
 
-        {/* Utility buttons with proper touch targets per DEAD TAP spec */}
+        {/* Utility buttons */}
         <motion.button
           whileHover={{ scale: 1.08 }}
           whileTap={{ scale: 0.92 }}

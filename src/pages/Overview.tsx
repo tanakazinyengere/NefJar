@@ -30,6 +30,13 @@ const fadeUp = {
   show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] as const } },
 }
 
+function getGreeting(): string {
+  const hour = new Date().getHours()
+  if (hour < 12) return 'Good morning.'
+  if (hour < 17) return 'Good afternoon.'
+  return 'Good evening.'
+}
+
 export default function Overview() {
   const navigate = useNavigate()
   const { toast } = useToast()
@@ -80,7 +87,7 @@ export default function Overview() {
           transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
           className="text-[26px] font-bold text-text-primary tracking-tight"
         >
-          Good morning.
+          {getGreeting()}
         </motion.h1>
         <motion.p
           initial={{ opacity: 0 }}
@@ -209,7 +216,7 @@ export default function Overview() {
             </h2>
             <Card className="divide-y divide-border-light">
               <motion.div
-                whileHover={{ backgroundColor: 'rgba(249,250,251,1)' }}
+                whileHover={{ backgroundColor: 'var(--color-bg-surface-hover)' }}
                 whileTap={{ scale: 0.995 }}
                 onClick={handleReviewMigration}
                 className="p-4 flex items-center gap-3 cursor-pointer rounded-t-xl"
@@ -225,7 +232,7 @@ export default function Overview() {
               </motion.div>
 
               <motion.div
-                whileHover={{ backgroundColor: 'rgba(249,250,251,1)' }}
+                whileHover={{ backgroundColor: 'var(--color-bg-surface-hover)' }}
                 whileTap={{ scale: 0.995 }}
                 onClick={handleInspectUsage}
                 className="p-4 flex items-center gap-3 cursor-pointer"

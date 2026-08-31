@@ -54,10 +54,10 @@ export default function Connection() {
               <div key={s} className="flex items-center gap-2">
                 <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-semibold transition-all duration-300 ${
                   isComplete
-                    ? 'bg-success text-white'
+                    ? 'bg-status-success text-white'
                     : isCurrent
-                    ? 'bg-text-primary text-white'
-                    : 'bg-surface-hover text-text-tertiary'
+                    ? 'bg-bg-inverse text-text-inverse'
+                    : 'bg-bg-surface-hover text-text-tertiary'
                 }`}>
                   {isComplete ? <CheckIcon size={14} /> : i + 1}
                 </div>
@@ -89,7 +89,7 @@ export default function Connection() {
                 onClick={() => setStep('github')}
                 className="p-5 flex items-center gap-4"
               >
-                <div className="w-12 h-12 rounded-xl bg-text-primary flex items-center justify-center text-white">
+                <div className="w-12 h-12 rounded-xl bg-bg-inverse flex items-center justify-center text-text-inverse">
                   <GitHubIcon size={24} />
                 </div>
                 <div className="flex-1">

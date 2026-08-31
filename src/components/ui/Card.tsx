@@ -15,7 +15,7 @@ export default function Card({ children, className = '', hover = false, onClick,
       initial={{ opacity: 0, y: 8 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, delay, ease: [0.4, 0, 0.2, 1] }}
-      whileHover={hover || onClick ? { y: -2, boxShadow: '0 4px 12px rgba(0,0,0,0.06)' } : undefined}
+      whileHover={hover || onClick ? { y: -2, boxShadow: 'var(--elevation-md)' } : undefined}
       onClick={onClick}
       className={`
         bg-surface rounded-xl border border-border

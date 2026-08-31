@@ -119,7 +119,7 @@ export default function CommandPalette() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="fixed inset-0 bg-black/40 z-50"
+            className="fixed inset-0 z-50" style={{ backgroundColor: 'var(--color-overlay-scrim)' }}
             onClick={() => setOpen(false)}
           />
 

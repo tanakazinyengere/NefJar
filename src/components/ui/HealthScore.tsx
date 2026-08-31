@@ -15,9 +15,9 @@ export default function HealthScore({ score, size = 120, strokeWidth = 8 }: Heal
   const offset = circumference - (displayScore / 100) * circumference
 
   const getColor = (s: number) => {
-    if (s >= 90) return '#16A34A'
-    if (s >= 70) return '#D97706'
-    return '#DC2626'
+    if (s >= 90) return 'var(--color-status-success)'
+    if (s >= 70) return 'var(--color-status-warning)'
+    return 'var(--color-status-error)'
   }
 
   useEffect(() => {
@@ -53,7 +53,7 @@ export default function HealthScore({ score, size = 120, strokeWidth = 8 }: Heal
           cy={size / 2}
           r={radius}
           fill="none"
-          stroke="#E7E9ED"
+          stroke="var(--color-border-default)"
           strokeWidth={strokeWidth}
         />
         {/* Score ring */}
