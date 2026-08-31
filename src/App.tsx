@@ -20,6 +20,8 @@ import Migrations from './pages/analysis/Migrations'
 import ClaudePage from './pages/ai/Claude'
 import Mcp from './pages/ai/Mcp'
 import Settings from './pages/Settings'
+import SplashScreen from './components/SplashScreen'
+import { useState, useCallback } from 'react'
 
 function PageTransition({ children }: { children: React.ReactNode }) {
   return (
@@ -68,9 +70,18 @@ function AnimatedRoutes() {
 }
 
 function App() {
+  const [showSplash, setShowSplash] = useState(() => {
+    return !sessionStorage.getItem('nefjar-splash-seen')
+  })
+  const handleSplashComplete = useCallback(() => {
+    sessionStorage.setItem('nefjar-splash-seen', '1')
+    setShowSplash(false)
+  }, [])
+
   return (
     <BrowserRouter>
       <ToastProvider>
+        {showSplash && <SplashScreen onComplete={handleSplashComplete} />}
         <AnimatedRoutes />
         <CommandPalette />
         <KeyboardShortcuts />

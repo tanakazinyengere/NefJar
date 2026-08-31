@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>NefJar Logo Variations</title>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <title>NefJar Logo — Round 3</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
   <style>
     * { margin: 0; padding: 0; box-sizing: border-box; }
     body { font-family: 'Inter', sans-serif; background: #F7F8FA; padding: 24px; color: #111318; }
@@ -14,178 +14,190 @@
       background: white; border-radius: 14px; padding: 24px 28px;
       border: 1px solid #E7E9ED; display: flex; flex-direction: column;
       align-items: center; gap: 12px; margin-bottom: 16px; transition: box-shadow 0.2s;
+      width: 100%; max-width: 600px; margin-left: auto; margin-right: auto;
     }
     .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .card.pick { border: 2px solid #2563EB; background: #F0F5FF; }
     .num { font-size: 13px; font-weight: 600; color: #2563EB; }
     .label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #69707D; }
-    .desc { font-size: 12px; color: #9CA3AF; text-align: center; max-width: 280px; }
+    .desc { font-size: 12px; color: #9CA3AF; text-align: center; max-width: 340px; }
     .row { display: flex; align-items: center; gap: 0; }
-    .dark-section { background: #0F1117; border-radius: 14px; padding: 28px; margin-top: 24px; }
+    .dark-section { background: #0F1117; border-radius: 14px; padding: 28px; margin-top: 24px; max-width: 600px; margin-left: auto; margin-right: auto; }
     .dark-title { color: #9CA3AF; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; text-align: center; margin-bottom: 20px; }
     .dark-grid { display: flex; flex-direction: column; gap: 16px; align-items: center; }
     .dark-item { display: flex; align-items: center; gap: 12px; }
+    .divider { max-width: 600px; margin: 32px auto; border: none; border-top: 1px solid #E7E9ED; }
   </style>
 </head>
 <body>
-  <h1>NefJar Logo Variations</h1>
-  <p class="subtitle">Pick the one you like. Scroll through all 10 below.</p>
+  <h1>NefJar Logo — Round 3</h1>
+  <p class="subtitle">Your picks (01, 05) + new slanted-lid variations. Pick your final.</p>
 
-  <!-- 01 -->
-  <div class="card">
-    <span class="num">01</span>
+  <!-- YOUR PICKS -->
+  <div class="card pick">
+    <span class="num">01 ★ YOUR PICK</span>
     <div class="row">
       <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
-        <rect x="2" y="8" width="32" height="32" rx="8" fill="#111318"/>
-        <path d="M10 17h14v2.5H10zM10 23h10v2.5H10zM10 29h14v2.5H10z" fill="white" opacity="0.9"/>
-        <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
-      </svg>
-    </div>
-    <span class="label">Stacked Lines</span>
-    <span class="desc">Dark rounded square with three white horizontal bars. Clean, minimal, developer-friendly.</span>
-  </div>
-
-  <!-- 02 -->
-  <div class="card">
-    <span class="num">02</span>
-    <div class="row">
-      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
-        <rect x="2" y="8" width="32" height="32" rx="8" fill="#2563EB"/>
-        <circle cx="12" cy="20" r="3" fill="white" opacity="0.9"/>
-        <circle cx="24" cy="20" r="3" fill="white" opacity="0.9"/>
-        <circle cx="18" cy="30" r="3" fill="white" opacity="0.9"/>
-        <path d="M12 20l6 10M24 20l-6 10" stroke="white" stroke-width="1.5" opacity="0.6"/>
-        <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
-      </svg>
-    </div>
-    <span class="label">Connected Nodes</span>
-    <span class="desc">Blue square with three connected white dots. Represents integration and connectivity.</span>
-  </div>
-
-  <!-- 03 -->
-  <div class="card">
-    <span class="num">03</span>
-    <div class="row">
-      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
-        <rect x="2" y="8" width="32" height="32" rx="8" fill="#111318"/>
-        <path d="M10 24h8l4-5 4 5h4" stroke="#2563EB" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M22 19v10" stroke="#2563EB" stroke-width="2" stroke-linecap="round" opacity="0.5"/>
-        <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
-      </svg>
-    </div>
-    <span class="label">Flow Arrow</span>
-    <span class="desc">Dark square with a blue directional arrow. Represents data flow and pipeline movement.</span>
-  </div>
-
-  <!-- 04 -->
-  <div class="card">
-    <span class="num">04</span>
-    <div class="row">
-      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
-        <rect x="2" y="8" width="32" height="32" rx="8" fill="#111318"/>
-        <path d="M16 12v6c0 5.5 4.5 10 4.5 10s4.5-4.5 4.5-10v-6" stroke="#2563EB" stroke-width="2" fill="none" stroke-linecap="round"/>
-        <circle cx="16" cy="16" r="2" fill="#2563EB"/>
-        <circle cx="24.5" cy="16" r="2" fill="#2563EB"/>
-        <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
-      </svg>
-    </div>
-    <span class="label">Shield Link</span>
-    <span class="desc">Dark square with a blue shield and connected dots. Security + linking.</span>
-  </div>
-
-  <!-- 05 -->
-  <div class="card">
-    <span class="num">05</span>
-    <div class="row">
-      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
-        <rect x="2" y="8" width="32" height="32" rx="8" fill="#16A34A"/>
-        <path d="M8 24h4l3-6 4 12 3-8 2 2h6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
-        <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
-      </svg>
-    </div>
-    <span class="label">Pulse Monitor</span>
-    <span class="desc">Green square with a white heartbeat line. Represents health monitoring and uptime.</span>
-  </div>
-
-  <!-- 06 -->
-  <div class="card">
-    <span class="num">06</span>
-    <div class="row">
-      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
-        <rect x="2" y="8" width="32" height="32" rx="16" fill="#111318"/>
-        <text x="18" y="31" font-family="Inter" font-weight="800" font-size="18" fill="white" text-anchor="middle">N</text>
-        <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
-      </svg>
-    </div>
-    <span class="label">Circle Monogram</span>
-    <span class="desc">Dark circle with a bold white "N". Clean, brandable, works at any size.</span>
-  </div>
-
-  <!-- 07 -->
-  <div class="card">
-    <span class="num">07</span>
-    <div class="row">
-      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
-        <rect x="2" y="8" width="32" height="32" rx="8" fill="#111318"/>
-        <circle cx="18" cy="24" r="8" stroke="#2563EB" stroke-width="2" fill="none"/>
-        <circle cx="18" cy="24" r="3" fill="#2563EB"/>
-        <line x1="18" y1="13" x2="18" y2="17" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="18" y1="31" x2="18" y2="35" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="7" y1="24" x2="11" y2="24" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
-        <line x1="25" y1="24" x2="29" y2="24" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round"/>
-        <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
-      </svg>
-    </div>
-    <span class="label">Diagnostic Crosshair</span>
-    <span class="desc">Dark square with a blue target reticle. Represents precision diagnostics.</span>
-  </div>
-
-  <!-- 08 -->
-  <div class="card">
-    <span class="num">08</span>
-    <div class="row">
-      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
-        <rect x="2" y="8" width="32" height="32" rx="8" fill="#111318"/>
-        <path d="M14 16v6c0 2-3 3-3 3s3 1 3 3v6" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <path d="M24 16v6c0 2 3 3 3 3s-3 1-3 3v6" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-        <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
-      </svg>
-    </div>
-    <span class="label">API Brackets</span>
-    <span class="desc">Dark square with blue curly braces { }. Developer-focused, API-centric.</span>
-  </div>
-
-  <!-- 09 -->
-  <div class="card">
-    <span class="num">09</span>
-    <div class="row">
-      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
-        <rect x="6" y="10" width="22" height="22" rx="4" fill="#2563EB" opacity="0.3"/>
-        <rect x="10" y="14" width="22" height="22" rx="4" fill="#2563EB" opacity="0.6"/>
-        <rect x="14" y="18" width="22" height="22" rx="4" fill="#111318"/>
-        <path d="M19 25h12M19 29h8" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+        <rect x="2" y="6" width="36" height="36" rx="8" fill="#111318"/>
+        <rect x="10" y="16" width="20" height="20" rx="3" stroke="white" stroke-width="1.8" fill="none"/>
+        <rect x="13" y="11" width="14" height="5" rx="2" fill="white" opacity="0.9"/>
+        <text x="20" y="30" font-family="Inter" font-weight="900" font-size="10" fill="white" text-anchor="middle">Nj</text>
         <text x="48" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
       </svg>
     </div>
-    <span class="label">Layered Depth</span>
-    <span class="desc">Three stacked semi-transparent squares. Represents layers, infrastructure, depth.</span>
+    <span class="label">Classic Jar — Closed (Nj)</span>
+    <span class="desc">Your original pick. Glass jar, lid on, "Nj" inside. Clean and brandable.</span>
   </div>
 
-  <!-- 10 -->
-  <div class="card">
-    <span class="num">10</span>
+  <div class="card pick">
+    <span class="num">05 ★ YOUR PICK</span>
     <div class="row">
       <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
-        <rect x="2" y="8" width="32" height="32" rx="8" fill="#111318"/>
-        <rect x="9" y="21" width="2.5" height="6" rx="1" fill="#2563EB" opacity="0.4"/>
-        <rect x="13" y="18" width="2.5" height="12" rx="1" fill="#2563EB" opacity="0.6"/>
-        <rect x="17" y="15" width="2.5" height="18" rx="1" fill="#2563EB" opacity="0.8"/>
-        <rect x="21" y="18" width="2.5" height="12" rx="1" fill="#2563EB"/>
-        <rect x="25" y="21" width="2.5" height="6" rx="1" fill="#2563EB" opacity="0.6"/>
-        <text x="44" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+        <rect x="2" y="6" width="36" height="36" rx="8" fill="#111318"/>
+        <rect x="10" y="17" width="20" height="19" rx="4" fill="#2563EB"/>
+        <rect x="13" y="12" width="14" height="5" rx="2" fill="#2563EB" opacity="0.6"/>
+        <text x="20" y="31" font-family="Inter" font-weight="900" font-size="10" fill="white" text-anchor="middle" opacity="0.9">Nj</text>
+        <rect x="13" y="20" width="3" height="10" rx="1.5" fill="white" opacity="0.2"/>
+        <text x="48" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
       </svg>
     </div>
-    <span class="label">Signal Wave</span>
-    <span class="desc">Dark square with blue bar waveform. Represents API signals and monitoring.</span>
+    <span class="label">Blue Jar — Closed (Nj)</span>
+    <span class="desc">Solid blue jar with "Nj" embossed. Bold, modern, tech-forward.</span>
+  </div>
+
+  <hr class="divider">
+
+  <p style="text-align:center; color:#69707D; font-size:13px; margin-bottom:24px; max-width:600px; margin-left:auto; margin-right:auto;">Slanted lid variations — the lid tilts upward as if being opened</p>
+
+  <!-- A: 01 with slanted lid -->
+  <div class="card">
+    <span class="num">A</span>
+    <div class="row">
+      <svg width="200" height="52" viewBox="0 0 200 52" fill="none">
+        <rect x="2" y="10" width="36" height="36" rx="8" fill="#111318"/>
+        <!-- Jar body -->
+        <rect x="10" y="20" width="20" height="22" rx="3" stroke="white" stroke-width="1.8" fill="none"/>
+        <!-- Lid slanted up-right — rotated 15deg -->
+        <rect x="12" y="10" width="16" height="4.5" rx="2" fill="white" opacity="0.9" transform="rotate(-15 20 12)"/>
+        <!-- Small gap indicator — motion lines -->
+        <line x1="16" y1="17" x2="16" y2="14" stroke="#2563EB" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+        <line x1="20" y1="16" x2="20" y2="12" stroke="#2563EB" stroke-width="1" stroke-linecap="round" opacity="0.7"/>
+        <line x1="24" y1="17" x2="24" y2="14" stroke="#2563EB" stroke-width="1" stroke-linecap="round" opacity="0.5"/>
+        <!-- Nj inside -->
+        <text x="20" y="34" font-family="Inter" font-weight="900" font-size="10" fill="white" text-anchor="middle">Nj</text>
+        <text x="48" y="34" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+      </svg>
+    </div>
+    <span class="label">Classic Jar — Lid Slanted Open (Nj)</span>
+    <span class="desc">Same as your pick 01 but lid tilts upward at an angle. Subtle motion lines suggest opening. Accessible, active.</span>
+  </div>
+
+  <!-- B: 05 with slanted lid -->
+  <div class="card">
+    <span class="num">B</span>
+    <div class="row">
+      <svg width="200" height="52" viewBox="0 0 200 52" fill="none">
+        <rect x="2" y="10" width="36" height="36" rx="8" fill="#111318"/>
+        <!-- Jar body filled blue -->
+        <rect x="10" y="20" width="20" height="22" rx="4" fill="#2563EB"/>
+        <!-- Lid slanted open -->
+        <rect x="12" y="10" width="16" height="4.5" rx="2" fill="#2563EB" opacity="0.7" transform="rotate(-15 20 12)"/>
+        <!-- Highlight -->
+        <rect x="13" y="24" width="3" height="10" rx="1.5" fill="white" opacity="0.2"/>
+        <!-- Nj inside -->
+        <text x="20" y="35" font-family="Inter" font-weight="900" font-size="10" fill="white" text-anchor="middle" opacity="0.9">Nj</text>
+        <text x="48" y="34" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+      </svg>
+    </div>
+    <span class="label">Blue Jar — Lid Slanted Open (Nj)</span>
+    <span class="desc">Same as your pick 05 but lid tilts upward. Blue jar with "Nj" embossed, lid opening to reveal contents.</span>
+  </div>
+
+  <!-- C: Slanted lid + glow particles -->
+  <div class="card">
+    <span class="num">C</span>
+    <div class="row">
+      <svg width="200" height="52" viewBox="0 0 200 52" fill="none">
+        <rect x="2" y="10" width="36" height="36" rx="8" fill="#111318"/>
+        <!-- Jar body -->
+        <rect x="10" y="20" width="20" height="22" rx="3" stroke="white" stroke-width="1.8" fill="none"/>
+        <!-- Lid slanted open more aggressively -->
+        <rect x="10" y="9" width="16" height="4.5" rx="2" fill="white" opacity="0.85" transform="rotate(-22 18 11)"/>
+        <!-- Data particles rising from open jar -->
+        <circle cx="17" cy="16" r="1.5" fill="#2563EB" opacity="0.7"/>
+        <circle cx="21" cy="14" r="1" fill="#2563EB" opacity="0.5"/>
+        <circle cx="24" cy="17" r="1.2" fill="#2563EB" opacity="0.4"/>
+        <circle cx="19" cy="13" r="0.8" fill="#2563EB" opacity="0.3"/>
+        <!-- Nj inside -->
+        <text x="20" y="34" font-family="Inter" font-weight="900" font-size="10" fill="white" text-anchor="middle">Nj</text>
+        <text x="48" y="34" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+      </svg>
+    </div>
+    <span class="label">Jar Opening — Particles Rising (Nj)</span>
+    <span class="desc">Lid tilted further open with blue data particles escaping. Represents extraction, intelligence flowing out.</span>
+  </div>
+
+  <!-- D: Slanted lid, outline only, minimal -->
+  <div class="card">
+    <span class="num">D</span>
+    <div class="row">
+      <svg width="200" height="52" viewBox="0 0 200 52" fill="none">
+        <rect x="2" y="10" width="36" height="36" rx="8" fill="#111318"/>
+        <!-- Jar body — blue outline -->
+        <rect x="10" y="20" width="20" height="22" rx="3" stroke="#2563EB" stroke-width="1.8" fill="none"/>
+        <!-- Lid slanted — blue fill -->
+        <rect x="12" y="10" width="16" height="4.5" rx="2" fill="#2563EB" opacity="0.8" transform="rotate(-15 20 12)"/>
+        <!-- Nj inside — blue -->
+        <text x="20" y="34" font-family="Inter" font-weight="900" font-size="10" fill="#2563EB" text-anchor="middle" opacity="0.9">Nj</text>
+        <text x="48" y="34" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+      </svg>
+    </div>
+    <span class="label">Minimal Jar — Blue Open (Nj)</span>
+    <span class="desc">Blue jar outline, blue slanted lid, "Nj" in blue. Minimal, monochrome blue on dark. Technical, clean.</span>
+  </div>
+
+  <!-- E: Slanted lid with hinged arc -->
+  <div class="card">
+    <span class="num">E</span>
+    <div class="row">
+      <svg width="200" height="52" viewBox="0 0 200 52" fill="none">
+        <rect x="2" y="10" width="36" height="36" rx="8" fill="#111318"/>
+        <!-- Jar body -->
+        <rect x="10" y="20" width="20" height="22" rx="3" stroke="white" stroke-width="1.8" fill="none"/>
+        <!-- Hinge arc from jar top-left to lid -->
+        <path d="M10 20 Q8 12 14 10" stroke="white" stroke-width="1.2" fill="none" stroke-linecap="round" opacity="0.6"/>
+        <!-- Lid hinged open — angled upward from left side -->
+        <rect x="11" y="8" width="16" height="4.5" rx="2" fill="white" opacity="0.85" transform="rotate(-18 19 10)"/>
+        <!-- Nj inside -->
+        <text x="20" y="34" font-family="Inter" font-weight="900" font-size="10" fill="white" text-anchor="middle">Nj</text>
+        <text x="48" y="34" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+      </svg>
+    </div>
+    <span class="label">Hinged Jar — Lid Open (Nj)</span>
+    <span class="desc">Jar with a visible hinge arc connecting lid to body. Lid swings open. Diagnostic, inspection metaphor.</span>
+  </div>
+
+  <!-- F: Blue slanted lid with particles -->
+  <div class="card">
+    <span class="num">F</span>
+    <div class="row">
+      <svg width="200" height="52" viewBox="0 0 200 52" fill="none">
+        <rect x="2" y="10" width="36" height="36" rx="8" fill="#111318"/>
+        <!-- Jar body filled blue -->
+        <rect x="10" y="20" width="20" height="22" rx="4" fill="#2563EB"/>
+        <!-- Blue lid slanted -->
+        <rect x="12" y="10" width="16" height="4.5" rx="2" fill="#60A5FA" transform="rotate(-18 20 12)"/>
+        <!-- Particles rising from blue jar -->
+        <circle cx="17" cy="17" r="1.2" fill="#93C5FD" opacity="0.7"/>
+        <circle cx="21" cy="15" r="0.9" fill="#93C5FD" opacity="0.5"/>
+        <circle cx="24" cy="18" r="1" fill="#93C5FD" opacity="0.4"/>
+        <!-- Nj -->
+        <text x="20" y="35" font-family="Inter" font-weight="900" font-size="10" fill="white" text-anchor="middle" opacity="0.9">Nj</text>
+        <text x="48" y="34" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+      </svg>
+    </div>
+    <span class="label">Blue Jar Opening — Particles (Nj)</span>
+    <span class="desc">Blue jar with lighter blue lid tilted open, light particles escaping. Bold blue + motion = premium tech feel.</span>
   </div>
 
   <!-- DARK MODE PREVIEWS -->
@@ -193,36 +205,42 @@
     <span class="dark-title">Dark Mode Previews</span>
     <div class="dark-grid">
       <div class="dark-item">
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-          <rect x="4" y="8" width="32" height="32" rx="8" fill="#E8EAED"/>
-          <path d="M12 17h14v2.5H12zM12 23h10v2.5H12zM12 29h14v2.5H12z" fill="#0F1117" opacity="0.85"/>
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+          <rect x="4" y="4" width="48" height="48" rx="12" fill="#E8EAED"/>
+          <rect x="14" y="20" width="28" height="24" rx="4" stroke="#111318" stroke-width="2" fill="none"/>
+          <rect x="18" y="14" width="20" height="6" rx="2.5" fill="#111318" opacity="0.85"/>
+          <text x="28" y="37" font-family="Inter" font-weight="900" font-size="13" fill="#111318" text-anchor="middle">Nj</text>
         </svg>
-        <span style="color:#E8EAED; font-weight:600; font-size:14px;">NefJar — 01 Stacked Lines</span>
+        <span style="color:#E8EAED; font-weight:600; font-size:14px;">01 Classic Jar — Closed</span>
       </div>
       <div class="dark-item">
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-          <rect x="4" y="8" width="32" height="32" rx="8" fill="#16A34A"/>
-          <path d="M10 24h4l3-6 4 12 3-8 2 2h6" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" opacity="0.9"/>
+        <svg width="56" height="56" viewBox="0 0 56 56" fill="none">
+          <rect x="4" y="4" width="48" height="48" rx="12" fill="#1E2130"/>
+          <rect x="14" y="21" width="28" height="23" rx="5" fill="#60A5FA"/>
+          <rect x="18" y="15" width="20" height="6" rx="2.5" fill="#60A5FA" opacity="0.6"/>
+          <text x="28" y="38" font-family="Inter" font-weight="900" font-size="13" fill="white" text-anchor="middle" opacity="0.9">Nj</text>
         </svg>
-        <span style="color:#E8EAED; font-weight:600; font-size:14px;">NefJar — 05 Pulse Monitor</span>
+        <span style="color:#E8EAED; font-weight:600; font-size:14px;">05 Blue Jar — Closed</span>
       </div>
       <div class="dark-item">
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-          <rect x="4" y="8" width="32" height="32" rx="16" fill="#E8EAED"/>
-          <text x="20" y="31" font-family="Inter" font-weight="800" font-size="16" fill="#0F1117" text-anchor="middle">N</text>
+        <svg width="56" height="60" viewBox="0 0 56 60" fill="none">
+          <rect x="4" y="8" width="48" height="48" rx="12" fill="#E8EAED"/>
+          <rect x="14" y="24" width="28" height="28" rx="4" stroke="#111318" stroke-width="2" fill="none"/>
+          <rect x="17" y="13" width="22" height="6" rx="2.5" fill="#111318" opacity="0.85" transform="rotate(-15 28 16)"/>
+          <text x="28" y="42" font-family="Inter" font-weight="900" font-size="13" fill="#111318" text-anchor="middle">Nj</text>
         </svg>
-        <span style="color:#E8EAED; font-weight:600; font-size:14px;">NefJar — 06 Circle Monogram</span>
+        <span style="color:#E8EAED; font-weight:600; font-size:14px;">A — Slanted Open</span>
       </div>
       <div class="dark-item">
-        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
-          <rect x="4" y="8" width="32" height="32" rx="8" fill="#1E2130"/>
-          <rect x="10" y="20" width="3" height="5" rx="1" fill="#60A5FA" opacity="0.4"/>
-          <rect x="14.5" y="17" width="3" height="11" rx="1" fill="#60A5FA" opacity="0.6"/>
-          <rect x="19" y="14" width="3" height="17" rx="1" fill="#60A5FA" opacity="0.8"/>
-          <rect x="23.5" y="17" width="3" height="11" rx="1" fill="#60A5FA"/>
-          <rect x="28" y="20" width="3" height="5" rx="1" fill="#60A5FA" opacity="0.6"/>
+        <svg width="56" height="60" viewBox="0 0 56 60" fill="none">
+          <rect x="4" y="8" width="48" height="48" rx="12" fill="#1E2130"/>
+          <rect x="14" y="24" width="28" height="28" rx="5" fill="#60A5FA"/>
+          <rect x="17" y="13" width="22" height="6" rx="2.5" fill="#93C5FD" transform="rotate(-15 28 16)"/>
+          <circle cx="25" cy="21" r="1.5" fill="#93C5FD" opacity="0.6"/>
+          <circle cx="30" cy="19" r="1" fill="#93C5FD" opacity="0.4"/>
+          <text x="28" y="43" font-family="Inter" font-weight="900" font-size="13" fill="white" text-anchor="middle" opacity="0.9">Nj</text>
         </svg>
-        <span style="color:#E8EAED; font-weight:600; font-size:14px;">NefJar — 10 Signal Wave</span>
+        <span style="color:#E8EAED; font-weight:600; font-size:14px;">F — Blue Opening</span>
       </div>
     </div>
   </div>

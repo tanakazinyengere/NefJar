@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NefJar Logo Variations</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #F7F8FA; padding: 24px; color: #111318; }
+    h1 { text-align: center; margin-bottom: 4px; font-size: 22px; font-weight: 700; }
+    .subtitle { text-align: center; color: #69707D; margin-bottom: 32px; font-size: 13px; }
+    .card {
+      background: white; border-radius: 14px; padding: 24px 28px;
+      border: 1px solid #E7E9ED; display: flex; flex-direction: column;
+      align-items: center; gap: 12px; margin-bottom: 16px; transition: box-shadow 0.2s;
+    }
+    .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .num { font-size: 13px; font-weight: 600; color: #2563EB; }
+    .label { font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; color: #69707D; }
+    .desc { font-size: 12px; color: #9CA3AF; text-align: center; max-width: 320px; }
+    .row { display: flex; align-items: center; gap: 0; }
+    .dark-section { background: #0F1117; border-radius: 14px; padding: 28px; margin-top: 24px; }
+    .dark-title { color: #9CA3AF; font-size: 11px; font-weight: 600; text-transform: uppercase; letter-spacing: 0.08em; text-align: center; margin-bottom: 20px; }
+    .dark-grid { display: flex; flex-direction: column; gap: 16px; align-items: center; }
+    .dark-item { display: flex; align-items: center; gap: 12px; }
+  </style>
+</head>
+<body>
+  <h1>NefJar Logo Variations</h1>
+  <p class="subtitle">Jar-themed. Pick the one you like. All work in light and dark mode.</p>
+
+  <!-- 01: Classic Jar — clean glass jar shape with N inside -->
+  <div class="card">
+    <span class="num">01</span>
+    <div class="row">
+      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
+        <rect x="2" y="6" width="36" height="36" rx="8" fill="#111318"/>
+        <!-- Jar body -->
+        <rect x="10" y="16" width="20" height="20" rx="3" stroke="white" stroke-width="1.8" fill="none"/>
+        <!-- Jar lid -->
+        <rect x="13" y="11" width="14" height="5" rx="2" fill="white" opacity="0.9"/>
+        <!-- N inside jar -->
+        <text x="20" y="30" font-family="Inter" font-weight="800" font-size="11" fill="white" text-anchor="middle">N</text>
+        <text x="48" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+      </svg>
+    </div>
+    <span class="label">Classic Jar</span>
+    <span class="desc">Dark rounded square with a glass jar outline, lid on top, bold "N" inside. Clean and brandable.</span>
+  </div>
+
+  <!-- 02: Filled Jar — solid jar silhouette with contents -->
+  <div class="card">
+    <span class="num">02</span>
+    <div class="row">
+      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
+        <rect x="2" y="6" width="36" height="36" rx="8" fill="#2563EB"/>
+        <!-- Jar body filled -->
+        <rect x="10" y="16" width="20" height="20" rx="4" fill="white" opacity="0.25"/>
+        <!-- Jar lid -->
+        <rect x="13" y="11" width="14" height="5" rx="2" fill="white" opacity="0.9"/>
+        <!-- Jar contents — horizontal lines (data/contents) -->
+        <path d="M14 22h12M14 26h8M14 30h10" stroke="white" stroke-width="1.5" stroke-linecap="round" opacity="0.8"/>
+        <text x="48" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+      </svg>
+    </div>
+    <span class="label">Filled Jar</span>
+    <span class="desc">Blue square, translucent jar filled with data lines. Represents a jar of intelligence.</span>
+  </div>
+
+  <!-- 03: Jar + Pulse — jar shape with a heartbeat/monitoring line -->
+  <div class="card">
+    <span class="num">03</span>
+    <div class="row">
+      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
+        <rect x="2" y="6" width="36" height="36" rx="8" fill="#111318"/>
+        <!-- Jar outline -->
+        <rect x="10" y="16" width="20" height="20" rx="3" stroke="#2563EB" stroke-width="1.8" fill="none"/>
+        <!-- Jar lid -->
+        <rect x="13" y="11" width="14" height="5" rx="2" fill="#2563EB"/>
+        <!-- Pulse line inside jar -->
+        <path d="M13 26h3l2-4 3 8 2-5h4" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+        <text x="48" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+      </svg>
+    </div>
+    <span class="label">Jar + Pulse</span>
+    <span class="desc">Dark square, blue jar outline with a monitoring heartbeat inside. Health + jar combined.</span>
+  </div>
+
+  <!-- 04: Jar Monogram — circle with jar silhouette + N -->
+  <div class="card">
+    <span class="num">04</span>
+    <div class="row">
+      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
+        <rect x="2" y="6" width="36" height="36" rx="18" fill="#111318"/>
+        <!-- Jar shape inside circle -->
+        <rect x="12" y="17" width="16" height="16" rx="2.5" stroke="white" stroke-width="1.5" fill="none"/>
+        <!-- Jar lid -->
+        <rect x="14" y="13" width="12" height="4" rx="1.5" fill="white" opacity="0.8"/>
+        <!-- N overlapping jar -->
+        <text x="20" y="31" font-family="Inter" font-weight="800" font-size="12" fill="white" text-anchor="middle" opacity="0.95">N</text>
+        <text x="48" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+      </svg>
+    </div>
+    <span class="label">Jar Monogram</span>
+    <span class="desc">Dark circle, jar outline with "N" monogram inside. Compact and works at any size.</span>
+  </div>
+
+  <!-- 05: Blue Jar — modern flat jar in brand blue -->
+  <div class="card">
+    <span class="num">05</span>
+    <div class="row">
+      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
+        <rect x="2" y="6" width="36" height="36" rx="8" fill="#111318"/>
+        <!-- Jar body — filled blue -->
+        <rect x="10" y="17" width="20" height="19" rx="4" fill="#2563EB"/>
+        <!-- Jar lid — blue on dark -->
+        <rect x="13" y="12" width="14" height="5" rx="2" fill="#2563EB" opacity="0.7"/>
+        <!-- Jar shine/highlight -->
+        <rect x="13" y="20" width="3" height="10" rx="1.5" fill="white" opacity="0.25"/>
+        <text x="48" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+      </svg>
+    </div>
+    <span class="label">Blue Jar</span>
+    <span class="desc">Dark square, solid blue jar with a subtle highlight. Modern, bold, tech-forward.</span>
+  </div>
+
+  <!-- 06: Jar with Arrow — jar with a data flow arrow coming out -->
+  <div class="card">
+    <span class="num">06</span>
+    <div class="row">
+      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
+        <rect x="2" y="6" width="36" height="36" rx="8" fill="#111318"/>
+        <!-- Jar outline -->
+        <rect x="8" y="17" width="16" height="16" rx="2.5" stroke="white" stroke-width="1.5" fill="none"/>
+        <!-- Jar lid -->
+        <rect x="10" y="13" width="12" height="4" rx="1.5" fill="white" opacity="0.7"/>
+        <!-- Arrow flowing out of jar -->
+        <path d="M24 22h6l3-3" stroke="#2563EB" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M27 26h4l2-2" stroke="#2563EB" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.5"/>
+        <text x="48" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+      </svg>
+    </div>
+    <span class="label">Jar + Flow</span>
+    <span class="desc">Dark square, white jar with blue data arrows flowing out. Represents extraction and intelligence.</span>
+  </div>
+
+  <!-- 07: Minimal Jar Lid — abstract jar lid shape forming an N -->
+  <div class="card">
+    <span class="num">07</span>
+    <div class="row">
+      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
+        <rect x="2" y="6" width="36" height="36" rx="8" fill="#111318"/>
+        <!-- Abstract jar: lid + body as minimal lines -->
+        <rect x="12" y="12" width="16" height="3" rx="1.5" fill="#2563EB"/>
+        <rect x="10" y="18" width="20" height="18" rx="3" stroke="#2563EB" stroke-width="1.8" fill="none"/>
+        <!-- N formed by a subtle path inside -->
+        <path d="M15 24v8M15 24l6 8M21 24v8" stroke="white" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" opacity="0.8"/>
+        <text x="48" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+      </svg>
+    </div>
+    <span class="label">Minimal Jar</span>
+    <span class="desc">Dark square, blue jar outline with an "N" path inside. Subtle, technical, refined.</span>
+  </div>
+
+  <!-- 08: Jar Seal — jar lid viewed from above with N embossed -->
+  <div class="card">
+    <span class="num">08</span>
+    <div class="row">
+      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
+        <rect x="2" y="6" width="36" height="36" rx="8" fill="#111318"/>
+        <!-- Jar lid from above — concentric circles -->
+        <circle cx="20" cy="24" r="12" stroke="#2563EB" stroke-width="1.5" fill="none" opacity="0.4"/>
+        <circle cx="20" cy="24" r="8" stroke="#2563EB" stroke-width="1.5" fill="none" opacity="0.7"/>
+        <!-- N embossed in center -->
+        <text x="20" y="27" font-family="Inter" font-weight="800" font-size="10" fill="white" text-anchor="middle">N</text>
+        <text x="48" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+      </svg>
+    </div>
+    <span class="label">Jar Seal</span>
+    <span class="desc">Dark square, top-down jar lid with concentric rings and "N" at center. Seal/security metaphor.</span>
+  </div>
+
+  <!-- 09: Glowing Jar — jar with a subtle inner glow representing data/energy -->
+  <div class="card">
+    <span class="num">09</span>
+    <div class="row">
+      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
+        <defs>
+          <linearGradient id="jarGlow" x1="20" y1="36" x2="20" y2="16" gradientUnits="userSpaceOnUse">
+            <stop offset="0%" stop-color="#2563EB" stop-opacity="0.6"/>
+            <stop offset="100%" stop-color="#2563EB" stop-opacity="0.1"/>
+          </linearGradient>
+        </defs>
+        <rect x="2" y="6" width="36" height="36" rx="8" fill="#111318"/>
+        <!-- Jar body with gradient fill (glowing from bottom) -->
+        <rect x="10" y="17" width="20" height="19" rx="3" fill="url(#jarGlow)"/>
+        <!-- Jar outline -->
+        <rect x="10" y="17" width="20" height="19" rx="3" stroke="#2563EB" stroke-width="1.5" fill="none"/>
+        <!-- Jar lid -->
+        <rect x="13" y="12" width="14" height="5" rx="2" fill="#2563EB" opacity="0.6"/>
+        <text x="48" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+      </svg>
+    </div>
+    <span class="label">Glowing Jar</span>
+    <span class="desc">Dark square, jar with blue gradient glow rising from the bottom. Energy, data, activation.</span>
+  </div>
+
+  <!-- 10: Jar + Signal — jar shape made of bar chart signals -->
+  <div class="card">
+    <span class="num">10</span>
+    <div class="row">
+      <svg width="200" height="48" viewBox="0 0 200 48" fill="none">
+        <rect x="2" y="6" width="36" height="36" rx="8" fill="#111318"/>
+        <!-- Jar shape formed by vertical bars -->
+        <rect x="11" y="20" width="2.5" height="12" rx="1" fill="#2563EB" opacity="0.5"/>
+        <rect x="14.5" y="17" width="2.5" height="15" rx="1" fill="#2563EB" opacity="0.7"/>
+        <rect x="18" y="14" width="2.5" height="18" rx="1" fill="#2563EB" opacity="0.9"/>
+        <rect x="21.5" y="17" width="2.5" height="15" rx="1" fill="#2563EB" opacity="0.7"/>
+        <rect x="25" y="20" width="2.5" height="12" rx="1" fill="#2563EB" opacity="0.5"/>
+        <!-- Jar lid — flat bar on top -->
+        <rect x="11" y="12" width="16.5" height="3" rx="1.5" fill="white" opacity="0.7"/>
+        <text x="48" y="30" font-family="Inter" font-weight="700" font-size="20" fill="#111318">NefJar</text>
+      </svg>
+    </div>
+    <span class="label">Signal Jar</span>
+    <span class="desc">Dark square, jar silhouette formed by ascending/descending signal bars with a lid. Data + jar combined.</span>
+  </div>
+
+  <!-- DARK MODE PREVIEWS -->
+  <div class="dark-section">
+    <span class="dark-title">Dark Mode Previews</span>
+    <div class="dark-grid">
+      <!-- Dark 01: Classic Jar -->
+      <div class="dark-item">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <rect x="4" y="4" width="40" height="40" rx="10" fill="#E8EAED"/>
+          <rect x="14" y="19" width="20" height="18" rx="3" stroke="#111318" stroke-width="2" fill="none"/>
+          <rect x="17" y="14" width="14" height="5" rx="2" fill="#111318" opacity="0.85"/>
+          <text x="24" y="32" font-family="Inter" font-weight="800" font-size="12" fill="#111318" text-anchor="middle">N</text>
+        </svg>
+        <span style="color:#E8EAED; font-weight:600; font-size:14px;">NefJar — 01 Classic Jar</span>
+      </div>
+      <!-- Dark 05: Blue Jar -->
+      <div class="dark-item">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <rect x="4" y="4" width="40" height="40" rx="10" fill="#1E2130"/>
+          <rect x="14" y="20" width="20" height="17" rx="4" fill="#60A5FA"/>
+          <rect x="17" y="15" width="14" height="5" rx="2" fill="#60A5FA" opacity="0.6"/>
+          <rect x="17" y="23" width="3" height="10" rx="1.5" fill="white" opacity="0.2"/>
+        </svg>
+        <span style="color:#E8EAED; font-weight:600; font-size:14px;">NefJar — 05 Blue Jar</span>
+      </div>
+      <!-- Dark 04: Jar Monogram -->
+      <div class="dark-item">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <rect x="4" y="4" width="40" height="40" rx="20" fill="#E8EAED"/>
+          <rect x="15" y="19" width="18" height="16" rx="2.5" stroke="#111318" stroke-width="1.5" fill="none"/>
+          <rect x="17" y="15" width="14" height="4" rx="1.5" fill="#111318" opacity="0.8"/>
+          <text x="24" y="33" font-family="Inter" font-weight="800" font-size="13" fill="#111318" text-anchor="middle">N</text>
+        </svg>
+        <span style="color:#E8EAED; font-weight:600; font-size:14px;">NefJar — 04 Jar Monogram</span>
+      </div>
+      <!-- Dark 10: Signal Jar -->
+      <div class="dark-item">
+        <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
+          <rect x="4" y="4" width="40" height="40" rx="10" fill="#1E2130"/>
+          <rect x="13" y="23" width="3" height="12" rx="1" fill="#60A5FA" opacity="0.5"/>
+          <rect x="17" y="20" width="3" height="15" rx="1" fill="#60A5FA" opacity="0.7"/>
+          <rect x="21" y="17" width="3" height="18" rx="1" fill="#60A5FA" opacity="0.9"/>
+          <rect x="25" y="20" width="3" height="15" rx="1" fill="#60A5FA" opacity="0.7"/>
+          <rect x="29" y="23" width="3" height="12" rx="1" fill="#60A5FA" opacity="0.5"/>
+          <rect x="13" y="15" width="19" height="3" rx="1.5" fill="white" opacity="0.6"/>
+        </svg>
+        <span style="color:#E8EAED; font-weight:600; font-size:14px;">NefJar — 10 Signal Jar</span>
+      </div>
+    </div>
+  </div>
+
+</body>
+</html>

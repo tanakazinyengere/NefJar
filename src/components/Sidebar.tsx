@@ -108,7 +108,9 @@ export default function Sidebar() {
         >
           <div className="w-7 h-7 bg-bg-inverse rounded-lg flex items-center justify-center text-text-inverse">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M3 4h10v2H3zM3 8h7v2H3zM3 12h10v2H3z" fill="currentColor" opacity="0.9"/>
+              <rect x="3" y="6" width="10" height="8" rx="1.5" stroke="currentColor" strokeWidth="1.2" fill="none"/>
+              <rect x="4.5" y="4" width="7" height="2.5" rx="1" fill="currentColor" opacity="0.8"/>
+              <text x="8" y="12" fontFamily="Inter,sans-serif" fontWeight="900" fontSize="5" fill="currentColor" textAnchor="middle">Nj</text>
             </svg>
           </div>
           <span className="text-[15px] font-semibold text-text-primary tracking-tight">

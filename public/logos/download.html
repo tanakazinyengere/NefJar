@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NefJar — Logo Downloads</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap" rel="stylesheet">
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: 'Inter', sans-serif; background: #F7F8FA; padding: 40px 24px; color: #111318; }
+    h1 { text-align: center; margin-bottom: 8px; font-size: 24px; font-weight: 700; }
+    .subtitle { text-align: center; color: #69707D; margin-bottom: 40px; font-size: 14px; }
+    .grid { display: flex; flex-direction: column; gap: 20px; max-width: 600px; margin: 0 auto; }
+    .card {
+      background: white; border-radius: 16px; padding: 32px;
+      border: 1px solid #E7E9ED; display: flex; align-items: center; gap: 24px;
+      transition: box-shadow 0.2s;
+    }
+    .card:hover { box-shadow: 0 8px 24px rgba(0,0,0,0.06); }
+    .logo-preview { width: 80px; height: 80px; flex-shrink: 0; }
+    .logo-preview svg { width: 100%; height: 100%; }
+    .info { flex: 1; }
+    .info h3 { font-size: 16px; font-weight: 700; margin-bottom: 4px; }
+    .info p { font-size: 12px; color: #69707D; margin-bottom: 12px; }
+    .download-btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 8px 16px; border-radius: 8px; font-size: 13px; font-weight: 600;
+      background: #2563EB; color: white; border: none; cursor: pointer;
+      transition: background 0.15s;
+    }
+    .download-btn:hover { background: #1D4ED8; }
+    .download-btn svg { width: 14px; height: 14px; }
+    .dark-card { background: #0F1117; border-color: #2A2D38; }
+    .dark-card h3 { color: #E8EAED; }
+    .dark-card p { color: #9CA3AF; }
+    .dark-card .download-btn { background: #60A5FA; color: #0F1117; }
+    .dark-card .download-btn:hover { background: #93C5FD; }
+  </style>
+</head>
+<body>
+  <h1>NefJar Logo Downloads</h1>
+  <p class="subtitle">Click to download as PNG. All logos at 512×512px.</p>
+
+  <div class="grid">
+    <!-- 01 Closed — Light Mode -->
+    <div class="card">
+      <div class="logo-preview" id="logo01"></div>
+      <div class="info">
+        <h3>Classic Jar — Closed</h3>
+        <p>Light mode logo. Dark square, glass jar, "Nj" inside. Use on light backgrounds.</p>
+        <button class="download-btn" onclick="downloadPNG('logo01', 'nefjar-logo-closed-light')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download PNG
+        </button>
+      </div>
+    </div>
+
+    <!-- 05 Closed — Dark Mode -->
+    <div class="card dark-card">
+      <div class="logo-preview" id="logo05"></div>
+      <div class="info">
+        <h3>Blue Jar — Closed</h3>
+        <p>Dark mode logo. Solid blue jar with "Nj" embossed. Use on dark backgrounds.</p>
+        <button class="download-btn" onclick="downloadPNG('logo05', 'nefjar-logo-closed-dark')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download PNG
+        </button>
+      </div>
+    </div>
+
+    <!-- A Slanted Open — Main App Logo -->
+    <div class="card">
+      <div class="logo-preview" id="logoA"></div>
+      <div class="info">
+        <h3>Classic Jar — Lid Slanted Open ★</h3>
+        <p>Main app logo. Jar opening with motion lines. Use as primary brand mark.</p>
+        <button class="download-btn" onclick="downloadPNG('logoA', 'nefjar-logo-open')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download PNG
+        </button>
+      </div>
+    </div>
+
+    <!-- F Blue Opening — Secondary -->
+    <div class="card dark-card">
+      <div class="logo-preview" id="logoF"></div>
+      <div class="info">
+        <h3>Blue Jar — Opening ★</h3>
+        <p>Secondary logo. Blue jar opening with particles. Use for emphasis moments.</p>
+        <button class="download-btn" onclick="downloadPNG('logoF', 'nefjar-logo-blue-opening')">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/></svg>
+          Download PNG
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Render SVG logos into preview containers
+    const logos = {
+      logo01: `<svg viewBox="0 0 128 128" fill="none"><rect x="16" y="16" width="96" height="96" rx="24" fill="#111318"/><rect x="36" y="48" width="56" height="52" rx="8" stroke="white" stroke-width="4" fill="none"/><rect x="44" y="34" width="40" height="14" rx="5" fill="white" opacity="0.9"/><text x="64" y="84" font-family="Inter,sans-serif" font-weight="900" font-size="28" fill="white" text-anchor="middle">Nj</text></svg>`,
+      logo05: `<svg viewBox="0 0 128 128" fill="none"><rect x="16" y="16" width="96" height="96" rx="24" fill="#111318"/><rect x="36" y="48" width="56" height="52" rx="10" fill="#2563EB"/><rect x="44" y="34" width="40" height="14" rx="5" fill="#2563EB" opacity="0.6"/><text x="64" y="84" font-family="Inter,sans-serif" font-weight="900" font-size="28" fill="white" text-anchor="middle" opacity="0.9">Nj</text><rect x="44" y="56" width="8" height="28" rx="4" fill="white" opacity="0.2"/></svg>`,
+      logoA: `<svg viewBox="0 0 128 128" fill="none"><rect x="16" y="16" width="96" height="96" rx="24" fill="#111318"/><rect x="36" y="52" width="56" height="56" rx="8" stroke="white" stroke-width="4" fill="none"/><rect x="40" y="28" width="44" height="12" rx="5" fill="white" opacity="0.9" transform="rotate(-15 62 34)"/><line x1="48" y1="46" x2="48" y2="38" stroke="#2563EB" stroke-width="2" stroke-linecap="round" opacity="0.5"/><line x1="64" y1="44" x2="64" y2="34" stroke="#2563EB" stroke-width="2" stroke-linecap="round" opacity="0.7"/><line x1="80" y1="46" x2="80" y2="38" stroke="#2563EB" stroke-width="2" stroke-linecap="round" opacity="0.5"/><text x="64" y="88" font-family="Inter,sans-serif" font-weight="900" font-size="28" fill="white" text-anchor="middle">Nj</text></svg>`,
+      logoF: `<svg viewBox="0 0 128 128" fill="none"><rect x="16" y="16" width="96" height="96" rx="24" fill="#111318"/><rect x="36" y="52" width="56" height="56" rx="10" fill="#2563EB"/><rect x="40" y="28" width="44" height="12" rx="5" fill="#60A5FA" transform="rotate(-18 62 34)"/><circle cx="50" cy="44" r="3" fill="#93C5FD" opacity="0.7"/><circle cx="64" cy="40" r="2.2" fill="#93C5FD" opacity="0.5"/><circle cx="76" cy="46" r="2.5" fill="#93C5FD" opacity="0.4"/><rect x="44" y="60" width="8" height="28" rx="4" fill="white" opacity="0.15"/><text x="64" y="88" font-family="Inter,sans-serif" font-weight="900" font-size="28" fill="white" text-anchor="middle" opacity="0.9">Nj</text></svg>`
+    };
+
+    // Render previews
+    Object.keys(logos).forEach(id => {
+      document.getElementById(id).innerHTML = logos[id];
+    });
+
+    // Download as PNG
+    function downloadPNG(id, filename) {
+      const svgString = logos[id];
+      const canvas = document.createElement('canvas');
+      canvas.width = 512;
+      canvas.height = 512;
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+      const blob = new Blob([svgString], { type: 'image/svg+xml;charset=utf-8' });
+      const url = URL.createObjectURL(blob);
+      img.onload = function() {
+        ctx.drawImage(img, 0, 0, 512, 512);
+        URL.revokeObjectURL(url);
+        const a = document.createElement('a');
+        a.download = filename + '.png';
+        a.href = canvas.toDataURL('image/png');
+        a.click();
+      };
+      img.src = url;
+    }
+  </script>
+</body>
+</html>
