@@ -1,6 +1,9 @@
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
 import { AnimatePresence, motion } from 'framer-motion'
 import Layout from './components/Layout'
+import CommandPalette from './components/CommandPalette'
+import KeyboardShortcuts from './components/KeyboardShortcuts'
+import { ToastProvider } from './components/ui/Toast'
 import Overview from './pages/Overview'
 import Connection from './pages/Connection'
 import Explorer from './pages/Explorer'
@@ -41,32 +44,20 @@ function AnimatedRoutes() {
         <Routes location={location}>
           <Route element={<Layout />}>
             <Route path="/" element={<PageTransition><Overview /></PageTransition>} />
-
-            {/* Build */}
             <Route path="/build/connection" element={<PageTransition><Connection /></PageTransition>} />
             <Route path="/build/explorer" element={<PageTransition><Explorer /></PageTransition>} />
             <Route path="/build/simulator" element={<PageTransition><Simulator /></PageTransition>} />
-
-            {/* Test */}
             <Route path="/test/suites" element={<PageTransition><TestSuites /></PageTransition>} />
             <Route path="/test/webhooks" element={<PageTransition><Webhooks /></PageTransition>} />
-
-            {/* Monitor */}
             <Route path="/monitor/health" element={<PageTransition><MonitorHealth /></PageTransition>} />
             <Route path="/monitor/api" element={<PageTransition><ApiUsage /></PageTransition>} />
             <Route path="/monitor/versions" element={<PageTransition><Versions /></PageTransition>} />
             <Route path="/monitor/alerts" element={<PageTransition><Alerts /></PageTransition>} />
-
-            {/* Analysis */}
             <Route path="/analysis/diagnostics" element={<PageTransition><Diagnostics /></PageTransition>} />
             <Route path="/analysis/errors" element={<PageTransition><Errors /></PageTransition>} />
             <Route path="/analysis/migrations" element={<PageTransition><Migrations /></PageTransition>} />
-
-            {/* AI */}
             <Route path="/ai/claude" element={<PageTransition><ClaudePage /></PageTransition>} />
             <Route path="/ai/mcp" element={<PageTransition><Mcp /></PageTransition>} />
-
-            {/* Settings */}
             <Route path="/settings" element={<PageTransition><Settings /></PageTransition>} />
             <Route path="/settings/:section" element={<PageTransition><Settings /></PageTransition>} />
           </Route>
@@ -79,7 +70,14 @@ function AnimatedRoutes() {
 function App() {
   return (
     <BrowserRouter>
-      <AnimatedRoutes />
+      <ToastProvider>
+        <AnimatedRoutes />
+        <CommandPalette />
+        <KeyboardShortcuts />
+        {/* Screen reader live regions */}
+        <div id="sr-announcer-polite" aria-live="polite" aria-atomic="true" className="sr-only" />
+        <div id="sr-announcer-assertive" aria-live="assertive" aria-atomic="true" className="sr-only" />
+      </ToastProvider>
     </BrowserRouter>
   )
 }
