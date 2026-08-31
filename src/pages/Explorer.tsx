@@ -103,6 +103,8 @@ export default function Explorer() {
                           key={ep.path}
                           layoutId={selectedEndpoint.path === ep.path && selectedEndpoint.method === ep.method ? 'endpoint-selected' : undefined}
                           onClick={() => setSelectedEndpoint(ep)}
+                          whileHover={{ x: 2, transition: { type: 'spring', stiffness: 400, damping: 25, mass: 0.6 } }}
+                          whileTap={{ scale: 0.98, transition: { duration: 0.1 } }}
                           className={`w-full text-left px-3 py-2 rounded-lg text-[13px] transition-colors duration-150 ${
                             selectedEndpoint.path === ep.path && selectedEndpoint.method === ep.method
                               ? 'bg-accent-light border border-accent/20'

@@ -54,15 +54,19 @@ export default function Connection() {
 
             return (
               <div key={s} className="flex items-center gap-2">
-                <div className={`w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-semibold transition-all duration-300 ${
-                  isComplete
-                    ? 'bg-status-success text-white'
-                    : isCurrent
-                    ? 'bg-bg-inverse text-text-inverse'
-                    : 'bg-bg-surface-hover text-text-tertiary'
-                }`}>
+                <motion.div
+                  className={`w-7 h-7 rounded-full flex items-center justify-center text-[12px] font-semibold ${
+                    isComplete
+                      ? 'bg-status-success text-white'
+                      : isCurrent
+                      ? 'bg-bg-inverse text-text-inverse'
+                      : 'bg-bg-surface-hover text-text-tertiary'
+                  }`}
+                  animate={isCurrent ? { scale: [1, 1.15, 1] } : { scale: 1 }}
+                  transition={{ type: 'spring', stiffness: 400, damping: 20, mass: 0.6 }}
+                >
                   {isComplete ? <CheckIcon size={14} /> : i + 1}
-                </div>
+                </motion.div>
                 {i < 4 && (
                   <div className={`w-8 h-px ${
                     i < currentIdx ? 'bg-success' : 'bg-border'

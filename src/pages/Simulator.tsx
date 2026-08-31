@@ -187,6 +187,8 @@ export default function Simulator() {
                             key={scenario.id}
                             layoutId={selected.id === scenario.id ? 'scenario-selected' : undefined}
                             onClick={() => { setSelected(scenario); setResult(null) }}
+                            whileHover={{ x: 2, transition: { type: 'spring', stiffness: 400, damping: 25, mass: 0.6 } }}
+                            whileTap={{ scale: 0.98, transition: { duration: 0.1 } }}
                             className={`w-full text-left px-3 py-2.5 rounded-lg transition-colors duration-150 ${
                               selected.id === scenario.id
                                 ? 'bg-accent-light border border-accent/20'

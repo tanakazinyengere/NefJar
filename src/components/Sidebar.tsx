@@ -161,14 +161,23 @@ export default function Sidebar() {
                         <NavLink
                           key={item.path}
                           to={item.path}
-                          className={`flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-[13px] font-medium transition-all duration-150 mb-[1px] ${
+                          className={`relative flex items-center gap-2.5 px-2.5 py-[7px] rounded-md text-[13px] font-medium mb-[1px] ${
                             active
-                              ? 'bg-sidebar-active text-text-primary'
-                              : 'text-text-secondary hover:text-text-primary hover:bg-surface-hover'
+                              ? 'text-text-primary'
+                              : 'text-text-secondary hover:text-text-primary'
                           }`}
                         >
-                          <Icon size={16} />
-                          {item.label}
+                          {active && (
+                            <motion.div
+                              layoutId="sidebar-active"
+                              className="absolute inset-0 bg-sidebar-active rounded-md"
+                              transition={{ type: 'spring', stiffness: 400, damping: 30, mass: 0.8 }}
+                            />
+                          )}
+                          <span className="relative z-10 flex items-center gap-2.5">
+                            <Icon size={16} />
+                            {item.label}
+                          </span>
                         </NavLink>
                       )
                     })}
