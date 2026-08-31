@@ -172,6 +172,16 @@
   --spacing-20: 80px;
   --spacing-24: 96px;
 
+  /* ===== DENSITY TOKENS (set by [data-density]) ===== */
+  --density-control-height: 36px;
+  --density-control-padding-x: 12px;
+  --density-control-padding-y: 8px;
+  --density-row-gap: 8px;
+  --density-section-gap: 24px;
+  --density-card-padding: 20px;
+  --density-item-padding: 12px;
+  --density-font-size: 13px;
+
   /* ===== RADIUS TOKENS ===== */
   --radius-none: 0px;
   --radius-xs: 2px;
@@ -481,6 +491,31 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+  }
+
+  /* ===== DENSITY MODES ===== */
+  /* Compact: reduced spacing for more information density */
+  [data-density="compact"] {
+    --density-control-height: 32px;
+    --density-control-padding-x: 10px;
+    --density-control-padding-y: 6px;
+    --density-row-gap: 4px;
+    --density-section-gap: 16px;
+    --density-card-padding: 16px;
+    --density-item-padding: 8px;
+    --density-font-size: 12px;
+  }
+
+  /* Spacious: more breathing room for relaxed reading */
+  [data-density="spacious"] {
+    --density-control-height: 42px;
+    --density-control-padding-x: 16px;
+    --density-control-padding-y: 10px;
+    --density-row-gap: 12px;
+    --density-section-gap: 32px;
+    --density-card-padding: 28px;
+    --density-item-padding: 16px;
+    --density-font-size: 14px;
   }
 
   /* Smooth theme transitions */

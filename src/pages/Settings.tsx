@@ -109,6 +109,70 @@ function AddEnvironmentButton() {
   )
 }
 
+type DensityMode = 'comfortable' | 'compact' | 'spacious'
+
+function AppearanceSection() {
+  const [density, setDensity] = useState<DensityMode>(() => {
+    if (typeof window !== 'undefined') {
+      return (localStorage.getItem('nefjar-density') as DensityMode) || 'comfortable'
+    }
+    return 'comfortable'
+  })
+  const { toast } = useToast()
+
+  const setDensityMode = (mode: DensityMode) => {
+    setDensity(mode)
+    localStorage.setItem('nefjar-density', mode)
+    document.documentElement.setAttribute('data-density', mode)
+    toast(`Density set to ${mode}`)
+  }
+
+  // Apply density on mount
+  useState(() => {
+    document.documentElement.setAttribute('data-density', density)
+  })
+
+  const densityOptions: { value: DensityMode; label: string; description: string }[] = [
+    { value: 'comfortable', label: 'Comfortable', description: 'Default spacing' },
+    { value: 'compact', label: 'Compact', description: 'Denser layout' },
+    { value: 'spacious', label: 'Spacious', description: 'More breathing room' },
+  ]
+
+  return (
+    <Card className="p-6 space-y-4">
+      <h2 className="text-[15px] font-semibold text-text-primary">Appearance</h2>
+      <Toggle label="Dark mode" description="Switch between light and dark themes" />
+      <Toggle label="Reduced motion" description="Minimize animations throughout the interface" />
+      <div className="pt-3 border-t border-border-light">
+        <h3 className="text-[13px] font-medium text-text-primary mb-1">Density</h3>
+        <p className="text-[12px] text-text-tertiary mb-3">Control spacing and information density across the interface</p>
+        <div className="flex gap-2">
+          {densityOptions.map((opt) => (
+            <motion.button
+              key={opt.value}
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              onClick={() => setDensityMode(opt.value)}
+              className={`px-4 py-2.5 rounded-lg text-[13px] font-medium border transition-all duration-150 btn-touch-target ${
+                density === opt.value
+                  ? 'bg-action-primary text-white border-action-primary'
+                  : 'border-border-default text-text-secondary hover:border-action-primary hover:text-action-primary'
+              }`}
+            >
+              {opt.label}
+            </motion.button>
+          ))}
+        </div>
+        <p className="text-[11px] text-text-tertiary mt-2">
+          {density === 'comfortable' && 'Default spacing — balanced density for most workflows'}
+          {density === 'compact' && 'Reduced spacing — more content visible at once'}
+          {density === 'spacious' && 'Increased spacing — relaxed reading experience'}
+        </p>
+      </div>
+    </Card>
+  )
+}
+
 export default function Settings() {
   const [activeSection, setActiveSection] = useState('Project')
   const navigate = useNavigate()
@@ -173,22 +237,7 @@ export default function Settings() {
                 )}
 
                 {activeSection === 'Appearance' && (
-                  <Card className="p-6 space-y-4">
-                    <h2 className="text-[15px] font-semibold text-text-primary">Appearance</h2>
-                    <Toggle label="Dark mode" description="Switch between light and dark themes" />
-                    <Toggle label="Compact layout" description="Reduce spacing for more information density" />
-                    <Toggle label="Reduced motion" description="Minimize animations throughout the interface" />
-                    <div className="pt-3 border-t border-border-light">
-                      <h3 className="text-[13px] font-medium text-text-primary mb-3">Density</h3>
-                      <div className="flex gap-2">
-                        {['Comfortable', 'Compact', 'Dense'].map((d) => (
-                          <button key={d} className="px-4 py-2 rounded-lg text-[13px] font-medium border border-border hover:border-accent hover:text-accent transition-colors">
-                            {d}
-                          </button>
-                        ))}
-                      </div>
-                    </div>
-                  </Card>
+                  <AppearanceSection />
                 )}
 
                 {activeSection === 'Notifications' && (
