@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import Card from '../components/ui/Card'
@@ -5,6 +6,7 @@ import HealthScore from '../components/ui/HealthScore'
 import StatusIndicator from '../components/ui/StatusIndicator'
 import Button from '../components/ui/Button'
 import ProgressBar from '../components/ui/ProgressBar'
+import { useToast } from '../components/ui/Toast'
 import {
   ShieldIcon,
   ApiIcon,
@@ -20,21 +22,49 @@ import {
 
 const stagger = {
   hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.06,
-    },
-  },
+  show: { opacity: 1, transition: { staggerChildren: 0.06 } },
 }
 
 const fadeUp = {
-  hidden: { opacity: 0, y: 8 },
-  show: { opacity: 1, y: 0, transition: { duration: 0.3 } },
+  hidden: { opacity: 0, y: 12 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: [0.4, 0, 0.2, 1] as const } },
 }
 
 export default function Overview() {
   const navigate = useNavigate()
+  const { toast } = useToast()
+  const [runningDiagnostic, setRunningDiagnostic] = useState(false)
+
+  const handleRunDiagnostic = () => {
+    setRunningDiagnostic(true)
+    toast('Running integration diagnostic...')
+    setTimeout(() => {
+      setRunningDiagnostic(false)
+      toast('Diagnostic complete — 94/100 health score')
+      navigate('/analysis/diagnostics')
+    }, 1200)
+  }
+
+  const handleViewDetails = () => {
+    toast('Opening health monitor')
+    navigate('/monitor/health')
+  }
+
+  const handleReviewMigration = () => {
+    toast('Opening migration analysis')
+    navigate('/analysis/migrations')
+  }
+
+  const handleInspectUsage = () => {
+    toast('Opening API usage')
+    navigate('/monitor/api')
+  }
+
+  const handleImproveScore = () => {
+    toast('Loading improvement recommendations...')
+    navigate('/analysis/diagnostics')
+  }
+
   return (
     <motion.div
       initial="hidden"
@@ -44,13 +74,23 @@ export default function Overview() {
     >
       {/* Header */}
       <motion.div variants={fadeUp} className="mb-8">
-        <h1 className="text-[26px] font-bold text-text-primary tracking-tight">
+        <motion.h1
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5, ease: [0.4, 0, 0.2, 1] }}
+          className="text-[26px] font-bold text-text-primary tracking-tight"
+        >
           Good morning.
-        </h1>
-        <p className="text-[15px] text-text-secondary mt-1">
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.2 }}
+          className="text-[15px] text-text-secondary mt-1"
+        >
           Your LinkedIn integration is healthy.
           <span className="text-text-tertiary ml-2 text-[13px]">Last checked 12 seconds ago</span>
-        </p>
+        </motion.p>
       </motion.div>
 
       {/* Health Hero */}
@@ -89,11 +129,11 @@ export default function Overview() {
               Last diagnostic 12s ago
             </div>
             <div className="flex gap-2">
-              <Button variant="secondary" size="sm" onClick={() => navigate('/analysis/diagnostics')}>
-                <RefreshIcon size={14} />
-                Run diagnostic
+              <Button variant="secondary" size="sm" onClick={handleRunDiagnostic}>
+                <RefreshIcon size={14} className={runningDiagnostic ? 'animate-spin' : ''} />
+                {runningDiagnostic ? 'Running...' : 'Run diagnostic'}
               </Button>
-              <Button size="sm" onClick={() => navigate('/monitor/health')}>
+              <Button size="sm" onClick={handleViewDetails}>
                 View details
                 <ArrowRightIcon size={14} />
               </Button>
@@ -104,7 +144,7 @@ export default function Overview() {
 
       {/* Four Core Status Cards */}
       <motion.div variants={fadeUp} className="grid grid-cols-4 gap-4 mb-6">
-        <Card hover className="p-5">
+        <Card hover onClick={() => { toast('Opening authentication details'); }} className="p-5">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-8 h-8 rounded-lg bg-success-light flex items-center justify-center">
               <ShieldIcon size={16} className="text-success" />
@@ -117,7 +157,7 @@ export default function Overview() {
           <p className="text-[12px] text-text-tertiary mt-3">OAuth2 · Token valid</p>
         </Card>
 
-        <Card hover className="p-5">
+        <Card hover onClick={() => { toast('Opening API health'); navigate('/monitor/api'); }} className="p-5">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-8 h-8 rounded-lg bg-success-light flex items-center justify-center">
               <ApiIcon size={16} className="text-success" />
@@ -130,7 +170,7 @@ export default function Overview() {
           <p className="text-[12px] text-text-tertiary mt-3">2,481 calls today</p>
         </Card>
 
-        <Card hover className="p-5">
+        <Card hover onClick={() => { toast('Opening API versions'); navigate('/monitor/versions'); }} className="p-5">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-8 h-8 rounded-lg bg-accent-light flex items-center justify-center">
               <VersionsIcon size={16} className="text-accent" />
@@ -145,7 +185,7 @@ export default function Overview() {
           <p className="text-[12px] text-text-tertiary mt-3">287 days remaining</p>
         </Card>
 
-        <Card hover className="p-5">
+        <Card hover onClick={() => { toast('Opening webhook monitor'); navigate('/test/webhooks'); }} className="p-5">
           <div className="flex items-center gap-2 mb-4">
             <div className="w-8 h-8 rounded-lg bg-success-light flex items-center justify-center">
               <WebhookIcon size={16} className="text-success" />
@@ -168,7 +208,12 @@ export default function Overview() {
               What needs your attention
             </h2>
             <Card className="divide-y divide-border-light">
-              <div onClick={() => navigate('/analysis/migrations')} className="p-4 flex items-center gap-3 cursor-pointer hover:bg-surface-hover transition-colors rounded-t-xl">
+              <motion.div
+                whileHover={{ backgroundColor: 'rgba(249,250,251,1)' }}
+                whileTap={{ scale: 0.995 }}
+                onClick={handleReviewMigration}
+                className="p-4 flex items-center gap-3 cursor-pointer rounded-t-xl"
+              >
                 <div className="w-8 h-8 rounded-lg bg-warning-light flex items-center justify-center shrink-0">
                   <WarningIcon size={16} className="text-warning" />
                 </div>
@@ -177,9 +222,14 @@ export default function Overview() {
                   <p className="text-[12px] text-text-tertiary">43 days remaining</p>
                 </div>
                 <span className="text-[12px] text-accent font-medium whitespace-nowrap">Review migration →</span>
-              </div>
+              </motion.div>
 
-              <div onClick={() => navigate('/monitor/api')} className="p-4 flex items-center gap-3 cursor-pointer hover:bg-surface-hover transition-colors">
+              <motion.div
+                whileHover={{ backgroundColor: 'rgba(249,250,251,1)' }}
+                whileTap={{ scale: 0.995 }}
+                onClick={handleInspectUsage}
+                className="p-4 flex items-center gap-3 cursor-pointer"
+              >
                 <div className="w-8 h-8 rounded-lg bg-warning-light flex items-center justify-center shrink-0">
                   <TrendingUpIcon size={16} className="text-warning" />
                 </div>
@@ -188,7 +238,7 @@ export default function Overview() {
                   <p className="text-[12px] text-text-tertiary">+28% this week</p>
                 </div>
                 <span className="text-[12px] text-accent font-medium whitespace-nowrap">Inspect usage →</span>
-              </div>
+              </motion.div>
 
               <div className="p-4 flex items-center gap-3 rounded-b-xl">
                 <div className="w-8 h-8 rounded-lg bg-success-light flex items-center justify-center shrink-0">
@@ -216,7 +266,13 @@ export default function Overview() {
                   { time: '09:12', event: 'Deployment detected', icon: <ApiIcon size={14} className="text-accent" /> },
                   { time: '08:54', event: 'OAuth token refreshed', icon: <ShieldIcon size={14} className="text-success" /> },
                 ].map((item, i) => (
-                  <div key={i} className="flex items-center gap-3 timeline-dot">
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -8 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: 0.5 + i * 0.08 }}
+                    className="flex items-center gap-3 timeline-dot"
+                  >
                     <span className="text-[12px] font-mono text-text-tertiary w-12 shrink-0">
                       {item.time}
                     </span>
@@ -224,7 +280,7 @@ export default function Overview() {
                       {item.icon}
                     </div>
                     <span className="text-[13px] text-text-secondary">{item.event}</span>
-                  </div>
+                  </motion.div>
                 ))}
               </div>
             </Card>
@@ -242,7 +298,7 @@ export default function Overview() {
               <p className="text-[13px] text-text-secondary mt-3">
                 You can improve this to 98
               </p>
-              <Button variant="secondary" size="sm" className="mt-3" onClick={() => navigate('/analysis/diagnostics')}>
+              <Button variant="secondary" size="sm" className="mt-3" onClick={handleImproveScore}>
                 Improve score
               </Button>
             </div>
@@ -255,8 +311,13 @@ export default function Overview() {
                 { label: 'Version health', score: 100 },
                 { label: 'Webhook health', score: 99 },
                 { label: 'Testing', score: 87 },
-              ].map((item) => (
-                <div key={item.label}>
+              ].map((item, i) => (
+                <motion.div
+                  key={item.label}
+                  initial={{ opacity: 0, x: 8 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.3 + i * 0.05 }}
+                >
                   <div className="flex items-center justify-between mb-1">
                     <span className="text-[12px] text-text-secondary">{item.label}</span>
                     <span className={`text-[12px] font-semibold ${
@@ -269,8 +330,9 @@ export default function Overview() {
                     value={item.score}
                     color={item.score >= 95 ? 'success' : item.score >= 80 ? 'warning' : 'danger'}
                     height={4}
+                    delay={0.4 + i * 0.05}
                   />
-                </div>
+                </motion.div>
               ))}
             </div>
           </Card>

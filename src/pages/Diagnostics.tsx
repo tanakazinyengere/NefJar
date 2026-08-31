@@ -4,6 +4,7 @@ import Card from '../components/ui/Card'
 import Button from '../components/ui/Button'
 import HealthScore from '../components/ui/HealthScore'
 import StatusIndicator from '../components/ui/StatusIndicator'
+import { useToast } from '../components/ui/Toast'
 import {
   DiagnosticsIcon,
   CheckIcon,
@@ -39,9 +40,11 @@ export default function Diagnostics() {
   const [checks, setChecks] = useState<CheckItem[]>(initialChecks)
   const [running, setRunning] = useState(false)
   const [complete, setComplete] = useState(false)
+  const { toast } = useToast()
 
   const runDiagnostics = async () => {
     setRunning(true)
+    toast('Running integration diagnostic...')
     setComplete(false)
     setChecks(initialChecks.map((c) => ({ ...c, status: 'pending' as const })))
 
@@ -71,6 +74,7 @@ export default function Diagnostics() {
 
     setRunning(false)
     setComplete(true)
+    toast('Diagnostic complete — 12 passed, 2 recommendations')
   }
 
   const categories = [...new Set(checks.map((c) => c.category))]

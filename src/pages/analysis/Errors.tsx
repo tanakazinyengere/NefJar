@@ -2,6 +2,7 @@ import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import Card from '../../components/ui/Card'
 import Button from '../../components/ui/Button'
+import { useToast } from '../../components/ui/Toast'
 import {
   ExternalLinkIcon,
   ClaudeIcon,
@@ -62,6 +63,7 @@ const errors: ErrorEntry[] = [
 
 export default function Errors() {
   const navigate = useNavigate()
+  const { toast } = useToast()
   return (
     <div className="max-w-[1000px] mx-auto p-8">
       <motion.div
@@ -148,10 +150,10 @@ export default function Errors() {
                     </div>
 
                     <div className="flex items-center gap-3">
-                      <Button variant="secondary" size="sm" onClick={() => navigate('/analysis/diagnostics')}>
+                      <Button variant="secondary" size="sm" onClick={() => { toast('Opening diagnostics...'); navigate('/analysis/diagnostics') }}>
                         Review resolution
                       </Button>
-                      <Button size="sm" onClick={() => navigate('/ai/claude')}>
+                      <Button size="sm" onClick={() => { toast('Opening Claude with error context...'); navigate('/ai/claude') }}>
                         <ClaudeIcon size={14} />
                         Open in Claude
                         <ExternalLinkIcon size={12} />
