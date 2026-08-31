@@ -1,4 +1,5 @@
-import { BrowserRouter, Routes, Route } from 'react-router-dom'
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom'
+import { AnimatePresence, motion } from 'framer-motion'
 import Layout from './components/Layout'
 import Overview from './pages/Overview'
 import Connection from './pages/Connection'
@@ -17,43 +18,68 @@ import ClaudePage from './pages/ai/Claude'
 import Mcp from './pages/ai/Mcp'
 import Settings from './pages/Settings'
 
+function PageTransition({ children }: { children: React.ReactNode }) {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 6 }}
+      animate={{ opacity: 1, y: 0 }}
+      exit={{ opacity: 0, y: -6 }}
+      transition={{ duration: 0.2, ease: [0.4, 0, 0.2, 1] }}
+      className="h-full"
+    >
+      {children}
+    </motion.div>
+  )
+}
+
+function AnimatedRoutes() {
+  const location = useLocation()
+
+  return (
+    <AnimatePresence mode="wait">
+      <motion.div key={location.pathname} className="h-full">
+        <Routes location={location}>
+          <Route element={<Layout />}>
+            <Route path="/" element={<PageTransition><Overview /></PageTransition>} />
+
+            {/* Build */}
+            <Route path="/build/connection" element={<PageTransition><Connection /></PageTransition>} />
+            <Route path="/build/explorer" element={<PageTransition><Explorer /></PageTransition>} />
+            <Route path="/build/simulator" element={<PageTransition><Simulator /></PageTransition>} />
+
+            {/* Test */}
+            <Route path="/test/suites" element={<PageTransition><TestSuites /></PageTransition>} />
+            <Route path="/test/webhooks" element={<PageTransition><Webhooks /></PageTransition>} />
+
+            {/* Monitor */}
+            <Route path="/monitor/health" element={<PageTransition><MonitorHealth /></PageTransition>} />
+            <Route path="/monitor/api" element={<PageTransition><ApiUsage /></PageTransition>} />
+            <Route path="/monitor/versions" element={<PageTransition><Versions /></PageTransition>} />
+            <Route path="/monitor/alerts" element={<PageTransition><Alerts /></PageTransition>} />
+
+            {/* Analysis */}
+            <Route path="/analysis/diagnostics" element={<PageTransition><Diagnostics /></PageTransition>} />
+            <Route path="/analysis/errors" element={<PageTransition><Errors /></PageTransition>} />
+            <Route path="/analysis/migrations" element={<PageTransition><Migrations /></PageTransition>} />
+
+            {/* AI */}
+            <Route path="/ai/claude" element={<PageTransition><ClaudePage /></PageTransition>} />
+            <Route path="/ai/mcp" element={<PageTransition><Mcp /></PageTransition>} />
+
+            {/* Settings */}
+            <Route path="/settings" element={<PageTransition><Settings /></PageTransition>} />
+            <Route path="/settings/:section" element={<PageTransition><Settings /></PageTransition>} />
+          </Route>
+        </Routes>
+      </motion.div>
+    </AnimatePresence>
+  )
+}
 
 function App() {
   return (
     <BrowserRouter>
-      <Routes>
-        <Route element={<Layout />}>
-          <Route path="/" element={<Overview />} />
-
-          {/* Build */}
-          <Route path="/build/connection" element={<Connection />} />
-          <Route path="/build/explorer" element={<Explorer />} />
-          <Route path="/build/simulator" element={<Simulator />} />
-
-          {/* Test */}
-          <Route path="/test/suites" element={<TestSuites />} />
-          <Route path="/test/webhooks" element={<Webhooks />} />
-
-          {/* Monitor */}
-          <Route path="/monitor/health" element={<MonitorHealth />} />
-          <Route path="/monitor/api" element={<ApiUsage />} />
-          <Route path="/monitor/versions" element={<Versions />} />
-          <Route path="/monitor/alerts" element={<Alerts />} />
-
-          {/* Analysis */}
-          <Route path="/analysis/diagnostics" element={<Diagnostics />} />
-          <Route path="/analysis/errors" element={<Errors />} />
-          <Route path="/analysis/migrations" element={<Migrations />} />
-
-          {/* AI */}
-          <Route path="/ai/claude" element={<ClaudePage />} />
-          <Route path="/ai/mcp" element={<Mcp />} />
-
-          {/* Settings */}
-          <Route path="/settings" element={<Settings />} />
-          <Route path="/settings/:section" element={<Settings />} />
-        </Route>
-      </Routes>
+      <AnimatedRoutes />
     </BrowserRouter>
   )
 }
