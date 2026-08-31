@@ -1,7 +1,10 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Card from '../../components/ui/Card'
 import Button from '../../components/ui/Button'
 import StatusIndicator from '../../components/ui/StatusIndicator'
+import EmptyState from '../../components/ui/EmptyState'
+import { useToast } from '../../components/ui/Toast'
 import {
   WebhookIcon,
   PlayIcon,
@@ -15,6 +18,26 @@ const webhookEvents = [
 ]
 
 export default function Webhooks() {
+  const { toast } = useToast()
+  const [testingAll, setTestingAll] = useState(false)
+
+  const handleTestAll = () => {
+    setTestingAll(true)
+    toast('Testing all webhook endpoints...')
+    setTimeout(() => {
+      setTestingAll(false)
+      toast('All webhook tests completed successfully')
+    }, 2000)
+  }
+
+  const handleSendTest = () => {
+    toast('Sending test event to webhook endpoints...')
+  }
+
+  const handleTestSingle = (event: string) => {
+    toast(`Testing ${event}...`)
+  }
+
   return (
     <div className="max-w-[1000px] mx-auto p-8">
       <motion.div
@@ -29,17 +52,28 @@ export default function Webhooks() {
             </p>
           </div>
           <div className="flex gap-2">
-            <Button variant="secondary" size="sm" onClick={() => {}}>
-              <RefreshIcon size={14} />
-              Test all
+            <Button variant="secondary" size="sm" onClick={handleTestAll} disabled={testingAll}>
+              <RefreshIcon size={14} className={testingAll ? 'animate-spin' : ''} />
+              {testingAll ? 'Testing...' : 'Test all'}
             </Button>
-            <Button size="sm" onClick={() => {}}>
+            <Button size="sm" onClick={handleSendTest}>
               <PlayIcon size={14} />
               Send test event
             </Button>
           </div>
         </div>
 
+        {webhookEvents.length === 0 ? (
+          <EmptyState
+            type="creation"
+            icon={<WebhookIcon size={24} />}
+            title="No webhooks configured"
+            description="Set up webhooks to receive real-time notifications when events happen on your LinkedIn application."
+            instruction="Webhooks let your application react to profile updates, post events, and organization changes."
+            primaryAction={{ label: 'Configure webhook', onClick: () => {} }}
+            secondaryAction={{ label: 'Learn about webhooks', onClick: () => {} }}
+          />
+        ) : (
         <div className="space-y-3">
           {webhookEvents.map((wh, i) => (
             <motion.div
@@ -68,7 +102,7 @@ export default function Webhooks() {
                     label={wh.status === 'healthy' ? 'Healthy' : 'Attention'}
                     size="sm"
                   />
-                  <Button variant="ghost" size="sm" onClick={() => {}}>
+                  <Button variant="ghost" size="sm" onClick={() => handleTestSingle(wh.event)}>
                     <PlayIcon size={14} />
                     Test
                   </Button>
@@ -77,6 +111,7 @@ export default function Webhooks() {
             </motion.div>
           ))}
         </div>
+        )}
       </motion.div>
     </div>
   )

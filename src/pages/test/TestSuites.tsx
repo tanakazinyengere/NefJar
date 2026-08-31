@@ -2,6 +2,7 @@ import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Card from '../../components/ui/Card'
 import Button from '../../components/ui/Button'
+import EmptyState from '../../components/ui/EmptyState'
 import {
   TestIcon,
   CheckIcon,
@@ -102,6 +103,17 @@ export default function TestSuites() {
         </div>
 
         {/* Suites */}
+        {suites.length === 0 ? (
+          <EmptyState
+            type="creation"
+            icon={<TestIcon size={24} />}
+            title="No test suites yet"
+            description="Create your first test suite to verify your LinkedIn integration behaves correctly before changes reach production."
+            instruction="Test suites run automatically against your configured endpoints."
+            primaryAction={{ label: 'Create test suite', onClick: () => {} }}
+            secondaryAction={{ label: 'View examples', onClick: () => {} }}
+          />
+        ) : (
         <div className="space-y-3">
           {suites.map((suite, i) => (
             <motion.div
@@ -163,6 +175,7 @@ export default function TestSuites() {
             </motion.div>
           ))}
         </div>
+        )}
       </motion.div>
     </div>
   )

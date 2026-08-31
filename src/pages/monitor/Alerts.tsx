@@ -1,7 +1,9 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import Card from '../../components/ui/Card'
 import Button from '../../components/ui/Button'
+import { useToast } from '../../components/ui/Toast'
 import {
   AlertsIcon,
   WarningIcon,
@@ -82,6 +84,14 @@ const categoryIcons: Record<string, React.ReactNode> = {
 
 export default function Alerts() {
   const navigate = useNavigate()
+  const { toast } = useToast()
+  const [readAlerts, setReadAlerts] = useState<Set<string>>(new Set())
+
+  const handleMarkAllRead = () => {
+    setReadAlerts(new Set(alerts.map(a => a.id)))
+    toast('All alerts marked as read')
+  }
+
   return (
     <div className="max-w-[1000px] mx-auto p-8">
       <motion.div
@@ -101,7 +111,7 @@ export default function Alerts() {
               {alerts.filter((a) => a.severity === 'warning').length}
             </span>
           </div>
-          <Button variant="secondary" size="sm" onClick={() => {}}>
+          <Button variant="secondary" size="sm" onClick={handleMarkAllRead}>
             <CheckIcon size={14} />
             Mark all as read
           </Button>
@@ -115,7 +125,7 @@ export default function Alerts() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: i * 0.05 }}
             >
-              <Card hover className="p-5">
+              <Card hover className={`p-5 transition-opacity ${readAlerts.has(alert.id) ? 'opacity-50' : ''}`}>
                 <div className="flex items-start gap-4">
                   <div className={`w-9 h-9 rounded-lg flex items-center justify-center shrink-0 ${
                     alert.severity === 'warning' ? 'bg-warning-light'
