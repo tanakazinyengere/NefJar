@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import Card from '../../components/ui/Card'
 import Button from '../../components/ui/Button'
+import EmptyState from '../../components/ui/EmptyState'
 import { useToast } from '../../components/ui/Toast'
 import {
   AlertsIcon,
@@ -87,9 +88,34 @@ export default function Alerts() {
   const { toast } = useToast()
   const [readAlerts, setReadAlerts] = useState<Set<string>>(new Set())
 
+  const [showEmpty, setShowEmpty] = useState(false)
+
   const handleMarkAllRead = () => {
     setReadAlerts(new Set(alerts.map(a => a.id)))
+    setShowEmpty(true)
     toast('All alerts marked as read')
+  }
+
+  if (showEmpty || alerts.length === 0) {
+    return (
+      <div className="max-w-[1000px] mx-auto p-8">
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
+          <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">Alerts</h1>
+          <p className="text-[15px] text-text-secondary mb-8">
+            Get notified when your integration needs attention.
+          </p>
+          <EmptyState
+            type="completed"
+            icon={<CheckIcon size={24} />}
+            title="You're all caught up"
+            description="No outstanding alerts. Your integration is running smoothly."
+            instruction="We'll notify you when something needs your attention."
+            primaryAction={{ label: 'Run diagnostic', onClick: () => { toast('Running diagnostic...'); setShowEmpty(false) } }}
+            secondaryAction={{ label: 'View health', onClick: () => {} }}
+          />
+        </motion.div>
+      </div>
+    )
   }
 
   return (

@@ -1,9 +1,12 @@
+import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Card from '../../components/ui/Card'
 import StatusIndicator from '../../components/ui/StatusIndicator'
+import EmptyState from '../../components/ui/EmptyState'
 import {
   TrendingUpIcon,
   TrendingDownIcon,
+  ApiIcon,
 } from '../../components/icons'
 
 const endpoints = [
@@ -21,6 +24,30 @@ const methodColors: Record<string, string> = {
 }
 
 export default function ApiUsage() {
+  const [hasData] = useState(true)
+
+  if (!hasData) {
+    return (
+      <div className="max-w-[1200px] mx-auto p-8">
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
+          <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">API Usage</h1>
+          <p className="text-[15px] text-text-secondary mb-8">
+            Monitor endpoint performance, latency, and error rates.
+          </p>
+          <EmptyState
+            type="first-use"
+            icon={<ApiIcon size={24} />}
+            title="No API calls tracked"
+            description="API usage data will appear here once your LinkedIn application starts making requests."
+            instruction="Connect your LinkedIn app and make your first API call to start tracking usage."
+            primaryAction={{ label: 'Make first request', onClick: () => {} }}
+            secondaryAction={{ label: 'Explore endpoints', onClick: () => {} }}
+          />
+        </motion.div>
+      </div>
+    )
+  }
+
   return (
     <div className="max-w-[1200px] mx-auto p-8">
       <motion.div

@@ -4,12 +4,14 @@ import Card from '../../components/ui/Card'
 import StatusIndicator from '../../components/ui/StatusIndicator'
 import HealthScore from '../../components/ui/HealthScore'
 import Button from '../../components/ui/Button'
+import EmptyState from '../../components/ui/EmptyState'
 import {
   ShieldIcon,
   ApiIcon,
   WebhookIcon,
   VersionsIcon,
   RefreshIcon,
+  HealthIcon,
 } from '../../components/icons'
 
 const stagger = {
@@ -24,6 +26,30 @@ const fadeUp = {
 
 export default function MonitorHealth() {
   const [refreshing, setRefreshing] = useState(false)
+  const [hasData] = useState(true)
+
+  if (!hasData) {
+    return (
+      <div className="max-w-[1200px] mx-auto p-8">
+        <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
+          <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">Health</h1>
+          <p className="text-[15px] text-text-secondary mb-8">
+            Track API usage, errors, latency and reliability across your environments.
+          </p>
+          <EmptyState
+            type="first-use"
+            icon={<HealthIcon size={24} />}
+            title="No health data yet"
+            description="Connect your LinkedIn application to start monitoring API health, uptime, and performance across your environments."
+            instruction="Health monitoring begins automatically after your first API connection."
+            primaryAction={{ label: 'Connect LinkedIn', onClick: () => {} }}
+            secondaryAction={{ label: 'Learn about monitoring', onClick: () => {} }}
+          />
+        </motion.div>
+      </div>
+    )
+  }
+
   return (
     <motion.div initial="hidden" animate="show" variants={stagger} className="max-w-[1200px] mx-auto p-8">
       <motion.div variants={fadeUp} className="flex items-start justify-between mb-8">
