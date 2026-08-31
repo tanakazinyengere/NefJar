@@ -51,8 +51,8 @@ export default function ClaudePage() {
         <Card className="p-6 mb-6">
           <div className="flex items-center justify-between">
             <div className="flex items-center gap-4">
-              <div className="w-12 h-12 rounded-xl bg-text-primary flex items-center justify-center">
-                <ClaudeIcon size={24} className="text-white" />
+              <div className="w-12 h-12 rounded-xl bg-bg-inverse flex items-center justify-center text-text-inverse">
+                <ClaudeIcon size={24} className="text-current" />
               </div>
               <div>
                 <h2 className="text-[15px] font-semibold text-text-primary">Claude Code</h2>
@@ -142,9 +142,9 @@ export default function ClaudePage() {
               <span className="text-[10px] text-text-tertiary">Protocol</span>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 rounded-xl bg-text-primary flex items-center justify-center mx-auto mb-2">
+              <div className="w-16 h-16 rounded-xl bg-bg-inverse flex items-center justify-center text-text-inverse mx-auto mb-2">
                 <svg width="28" height="28" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 4h10v2H3zM3 8h7v2H3zM3 12h10v2H3z" fill="white" opacity="0.9"/>
+                  <path d="M3 4h10v2H3zM3 8h7v2H3zM3 12h10v2H3z" fill="currentColor" opacity="0.9"/>
                 </svg>
               </div>
               <span className="text-[12px] text-text-secondary font-medium">NefJar</span>

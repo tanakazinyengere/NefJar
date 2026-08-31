@@ -106,9 +106,9 @@ export default function Sidebar() {
           className="flex items-center gap-2.5 cursor-pointer btn-touch-target -ml-1 px-1 py-1 rounded-md hover:bg-bg-surface-hover transition-colors"
           aria-label="Go to Overview"
         >
-          <div className="w-7 h-7 bg-text-primary rounded-lg flex items-center justify-center">
+          <div className="w-7 h-7 bg-bg-inverse rounded-lg flex items-center justify-center text-text-inverse">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <path d="M3 4h10v2H3zM3 8h7v2H3zM3 12h10v2H3z" fill="white" opacity="0.9"/>
+              <path d="M3 4h10v2H3zM3 8h7v2H3zM3 12h10v2H3z" fill="currentColor" opacity="0.9"/>
             </svg>
           </div>
           <span className="text-[15px] font-semibold text-text-primary tracking-tight">
