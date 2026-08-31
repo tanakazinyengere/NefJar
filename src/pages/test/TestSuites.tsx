@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Card from '../../components/ui/Card'
+import Breadcrumb from '../../components/Breadcrumb'
 import Button from '../../components/ui/Button'
 import EmptyState from '../../components/ui/EmptyState'
 import {
@@ -76,7 +77,8 @@ export default function TestSuites() {
       >
         <div className="flex items-start justify-between mb-8">
           <div>
-            <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">Test Suites</h1>
+            <Breadcrumb />
+        <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">Test Suites</h1>
             <p className="text-[15px] text-text-secondary">
               Verify that your LinkedIn integration behaves correctly before changes reach production.
             </p>

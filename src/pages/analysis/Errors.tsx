@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import Card from '../../components/ui/Card'
+import Breadcrumb from '../../components/Breadcrumb'
 import Button from '../../components/ui/Button'
 import { useToast } from '../../components/ui/Toast'
 import {
@@ -70,6 +71,7 @@ export default function Errors() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
       >
+        <Breadcrumb />
         <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">Errors</h1>
         <p className="text-[15px] text-text-secondary mb-8">
           Investigate failed requests and identify the most likely cause.

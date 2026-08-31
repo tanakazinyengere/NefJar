@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import Card from '../components/ui/Card'
 import Button from '../components/ui/Button'
 import StatusIndicator from '../components/ui/StatusIndicator'
+import Breadcrumb from '../components/Breadcrumb'
 import {
   SendIcon,
   CheckIcon,
@@ -78,6 +79,7 @@ export default function Explorer() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
       >
+        <Breadcrumb />
         <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">
           API Explorer
         </h1>
@@ -97,13 +99,14 @@ export default function Explorer() {
                     </h3>
                     <div className="space-y-1">
                       {group.items.map((ep) => (
-                        <button
+                        <motion.button
                           key={ep.path}
+                          layoutId={selectedEndpoint.path === ep.path && selectedEndpoint.method === ep.method ? 'endpoint-selected' : undefined}
                           onClick={() => setSelectedEndpoint(ep)}
-                          className={`w-full text-left px-3 py-2 rounded-lg text-[13px] transition-all duration-150 ${
+                          className={`w-full text-left px-3 py-2 rounded-lg text-[13px] transition-colors duration-150 ${
                             selectedEndpoint.path === ep.path && selectedEndpoint.method === ep.method
                               ? 'bg-accent-light border border-accent/20'
-                              : 'hover:bg-surface-hover'
+                              : 'hover:bg-bg-surface-hover'
                           }`}
                         >
                           <div className="flex items-center gap-2 mb-0.5">
@@ -115,7 +118,7 @@ export default function Explorer() {
                             </span>
                           </div>
                           <p className="text-[11px] text-text-tertiary pl-[46px]">{ep.description}</p>
-                        </button>
+                        </motion.button>
                       ))}
                     </div>
                   </div>
@@ -129,9 +132,9 @@ export default function Explorer() {
             {/* Request bar */}
             <Card className="p-3">
               <div className="flex items-center gap-2">
-                <span className={`text-[11px] font-bold px-2 py-1 rounded ${methodColors[selectedEndpoint.method]}`}>
+                <motion.span layoutId="endpoint-method" className={`text-[11px] font-bold px-2 py-1 rounded ${methodColors[selectedEndpoint.method]}`}>
                   {selectedEndpoint.method}
-                </span>
+                </motion.span>
                 <div className="flex-1 bg-bg rounded-md px-3 py-2 text-[13px] font-mono text-text-primary border border-border-light">
                   https://api.linkedin.com{selectedEndpoint.path}
                 </div>

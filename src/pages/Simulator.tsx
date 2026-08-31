@@ -3,6 +3,7 @@ import { motion } from 'framer-motion'
 import Card from '../components/ui/Card'
 import Button from '../components/ui/Button'
 import StatusIndicator from '../components/ui/StatusIndicator'
+import Breadcrumb from '../components/Breadcrumb'
 import {
   SimulatorIcon,
   CheckIcon,
@@ -160,6 +161,7 @@ export default function Simulator() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
       >
+        <Breadcrumb />
         <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">
           API Simulator
         </h1>
@@ -181,13 +183,14 @@ export default function Simulator() {
                       {scenarios
                         .filter((s) => s.category === category)
                         .map((scenario) => (
-                          <button
+                          <motion.button
                             key={scenario.id}
+                            layoutId={selected.id === scenario.id ? 'scenario-selected' : undefined}
                             onClick={() => { setSelected(scenario); setResult(null) }}
-                            className={`w-full text-left px-3 py-2.5 rounded-lg transition-all duration-150 ${
+                            className={`w-full text-left px-3 py-2.5 rounded-lg transition-colors duration-150 ${
                               selected.id === scenario.id
                                 ? 'bg-accent-light border border-accent/20'
-                                : 'hover:bg-surface-hover'
+                                : 'hover:bg-bg-surface-hover'
                             }`}
                           >
                             <div className="flex items-center gap-2">
@@ -199,7 +202,7 @@ export default function Simulator() {
                             <p className="text-[11px] text-text-tertiary mt-0.5 ml-6">
                               {scenario.description}
                             </p>
-                          </button>
+                          </motion.button>
                         ))}
                     </div>
                   </div>

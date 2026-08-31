@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Card from '../../components/ui/Card'
+import Breadcrumb from '../../components/Breadcrumb'
 import {
   CodeIcon,
   CheckIcon,
@@ -34,6 +35,7 @@ export default function Mcp() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
       >
+        <Breadcrumb />
         <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">MCP Server</h1>
         <p className="text-[15px] text-text-secondary mb-8">
           Connect NefJar to Claude and other MCP-compatible clients through the Model Context Protocol.

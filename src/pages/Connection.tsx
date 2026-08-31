@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Card from '../components/ui/Card'
+import Breadcrumb from '../components/Breadcrumb'
 import Button from '../components/ui/Button'
 import StatusIndicator from '../components/ui/StatusIndicator'
 import {
@@ -35,6 +36,7 @@ export default function Connection() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3 }}
       >
+        <Breadcrumb />
         <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">
           Connect your LinkedIn application
         </h1>

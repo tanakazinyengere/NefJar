@@ -5,6 +5,7 @@ import Button from '../../components/ui/Button'
 import StatusIndicator from '../../components/ui/StatusIndicator'
 import ProgressBar from '../../components/ui/ProgressBar'
 import EmptyState from '../../components/ui/EmptyState'
+import Breadcrumb from '../../components/Breadcrumb'
 import {
   VersionsIcon,
   CheckIcon,
@@ -65,6 +66,7 @@ export default function Versions() {
     return (
       <div className="max-w-[1200px] mx-auto p-8">
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
+          <Breadcrumb />
           <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">API Versions</h1>
           <p className="text-[15px] text-text-secondary mb-8">
             Know what's changing, when versions expire and whether your application is affected.
@@ -89,6 +91,7 @@ export default function Versions() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
       >
+        <Breadcrumb />
         <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">API Versions</h1>
         <p className="text-[15px] text-text-secondary mb-8">
           Know what's changing, when versions expire and whether your application is affected.

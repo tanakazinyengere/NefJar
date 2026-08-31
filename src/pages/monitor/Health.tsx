@@ -5,6 +5,7 @@ import StatusIndicator from '../../components/ui/StatusIndicator'
 import HealthScore from '../../components/ui/HealthScore'
 import Button from '../../components/ui/Button'
 import EmptyState from '../../components/ui/EmptyState'
+import Breadcrumb from '../../components/Breadcrumb'
 import {
   ShieldIcon,
   ApiIcon,
@@ -32,6 +33,7 @@ export default function MonitorHealth() {
     return (
       <div className="max-w-[1200px] mx-auto p-8">
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
+          <Breadcrumb />
           <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">Health</h1>
           <p className="text-[15px] text-text-secondary mb-8">
             Track API usage, errors, latency and reliability across your environments.
@@ -54,10 +56,8 @@ export default function MonitorHealth() {
     <motion.div initial="hidden" animate="show" variants={stagger} className="max-w-[1200px] mx-auto p-8">
       <motion.div variants={fadeUp} className="flex items-start justify-between mb-8">
         <div>
+          <Breadcrumb />
           <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">Health</h1>
-          <p className="text-[15px] text-text-secondary">
-            Track API usage, errors, latency and reliability across your environments.
-          </p>
         </div>
         <div className="flex gap-2">
           <Button variant="secondary" size="sm" onClick={() => { setRefreshing(true); setTimeout(() => setRefreshing(false), 1500) }} disabled={refreshing}>

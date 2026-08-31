@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Card from '../components/ui/Card'
+import Breadcrumb from '../components/Breadcrumb'
 import Button from '../components/ui/Button'
 import HealthScore from '../components/ui/HealthScore'
 import StatusIndicator from '../components/ui/StatusIndicator'
@@ -95,7 +96,8 @@ export default function Diagnostics() {
       >
         <div className="flex items-start justify-between mb-8">
           <div>
-            <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">
+            <Breadcrumb />
+        <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">
               Integration Diagnostics
             </h1>
             <p className="text-[15px] text-text-secondary">

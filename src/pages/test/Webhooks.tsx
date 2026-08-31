@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { motion } from 'framer-motion'
 import Card from '../../components/ui/Card'
+import Breadcrumb from '../../components/Breadcrumb'
 import Button from '../../components/ui/Button'
 import StatusIndicator from '../../components/ui/StatusIndicator'
 import EmptyState from '../../components/ui/EmptyState'
@@ -46,7 +47,8 @@ export default function Webhooks() {
       >
         <div className="flex items-start justify-between mb-8">
           <div>
-            <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">Webhooks</h1>
+            <Breadcrumb />
+        <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">Webhooks</h1>
             <p className="text-[15px] text-text-secondary">
               Test and validate your webhook processing pipeline.
             </p>

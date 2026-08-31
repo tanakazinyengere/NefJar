@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom'
 import Card from '../../components/ui/Card'
 import Button from '../../components/ui/Button'
 import EmptyState from '../../components/ui/EmptyState'
+import Breadcrumb from '../../components/Breadcrumb'
 import { useToast } from '../../components/ui/Toast'
 import {
   AlertsIcon,
@@ -100,6 +101,7 @@ export default function Alerts() {
     return (
       <div className="max-w-[1000px] mx-auto p-8">
         <motion.div initial={{ opacity: 0, y: 8 }} animate={{ opacity: 1, y: 0 }}>
+          <Breadcrumb />
           <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">Alerts</h1>
           <p className="text-[15px] text-text-secondary mb-8">
             Get notified when your integration needs attention.
@@ -124,6 +126,7 @@ export default function Alerts() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
       >
+        <Breadcrumb />
         <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">Alerts</h1>
         <p className="text-[15px] text-text-secondary mb-8">
           Get notified when your integration needs attention.

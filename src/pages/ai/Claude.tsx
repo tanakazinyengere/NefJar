@@ -1,6 +1,7 @@
 import { motion } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import Card from '../../components/ui/Card'
+import Breadcrumb from '../../components/Breadcrumb'
 import Button from '../../components/ui/Button'
 import StatusIndicator from '../../components/ui/StatusIndicator'
 import {
@@ -40,6 +41,7 @@ export default function ClaudePage() {
         initial={{ opacity: 0, y: 8 }}
         animate={{ opacity: 1, y: 0 }}
       >
+        <Breadcrumb />
         <h1 className="text-[26px] font-bold text-text-primary tracking-tight mb-2">Claude Integration</h1>
         <p className="text-[15px] text-text-secondary mb-8">
           NefJar gives Claude specialized LinkedIn context. Claude writes the code. We understand the integration.

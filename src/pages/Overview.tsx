@@ -1,5 +1,5 @@
-import { useState } from 'react'
-import { motion } from 'framer-motion'
+import { useState, useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { useNavigate } from 'react-router-dom'
 import Card from '../components/ui/Card'
 import HealthScore from '../components/ui/HealthScore'
@@ -41,6 +41,12 @@ export default function Overview() {
   const navigate = useNavigate()
   const { toast } = useToast()
   const [runningDiagnostic, setRunningDiagnostic] = useState(false)
+  const heroRef = useRef<HTMLDivElement>(null)
+  const { scrollYProgress } = useScroll({ target: heroRef, offset: ['start end', 'end start'] })
+  // Scroll-linked parallax: health score moves slower than content (Level 2: Narrative motion)
+  const healthScoreY = useTransform(scrollYProgress, [0, 1], [20, -20])
+  const healthScoreScale = useTransform(scrollYProgress, [0, 0.5, 1], [0.95, 1, 0.98])
+  const heroOpacity = useTransform(scrollYProgress, [0, 0.3, 0.8, 1], [0.8, 1, 1, 0.9])
 
   const handleRunDiagnostic = () => {
     setRunningDiagnostic(true)
@@ -100,8 +106,8 @@ export default function Overview() {
         </motion.p>
       </motion.div>
 
-      {/* Health Hero */}
-      <motion.div variants={fadeUp}>
+      {/* Health Hero — scroll-linked parallax (Level 2: Narrative motion) */}
+      <motion.div variants={fadeUp} ref={heroRef} style={{ opacity: heroOpacity }}>
         <Card className="p-8 mb-6">
           <div className="flex items-start justify-between">
             <div className="flex-1">
@@ -125,9 +131,9 @@ export default function Overview() {
               </div>
             </div>
 
-            <div className="ml-8">
+            <motion.div className="ml-8" style={{ y: healthScoreY, scale: healthScoreScale }}>
               <HealthScore score={94} size={130} strokeWidth={8} />
-            </div>
+            </motion.div>
           </div>
 
           <div className="flex items-center justify-between mt-6 pt-5 border-t border-border-light">
@@ -294,13 +300,19 @@ export default function Overview() {
           </motion.div>
         </div>
 
-        {/* Right: Developer Score */}
+        {/* Right: Developer Score — scroll-linked entrance (Level 3: Structural) */}
         <motion.div variants={fadeUp} className="col-span-2">
           <h2 className="text-[14px] font-semibold text-text-primary mb-3">
             Developer Score
           </h2>
           <Card className="p-6">
-            <div className="text-center mb-6">
+            <motion.div
+              className="text-center mb-6"
+              initial={{ scale: 0.9, opacity: 0 }}
+              whileInView={{ scale: 1, opacity: 1 }}
+              viewport={{ once: true, margin: '-50px' }}
+              transition={{ duration: 0.5, type: 'spring', stiffness: 200, damping: 20 }}
+            >
               <HealthScore score={94} size={100} strokeWidth={7} />
               <p className="text-[13px] text-text-secondary mt-3">
                 You can improve this to 98
@@ -308,7 +320,7 @@ export default function Overview() {
               <Button variant="secondary" size="sm" className="mt-3" onClick={handleImproveScore}>
                 Improve score
               </Button>
-            </div>
+            </motion.div>
 
             <div className="space-y-3 pt-4 border-t border-border-light">
               {[
