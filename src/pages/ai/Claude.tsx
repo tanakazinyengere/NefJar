@@ -144,7 +144,16 @@ export default function ClaudePage() {
             <div className="text-center">
               <div className="w-16 h-16 rounded-xl bg-bg-inverse flex items-center justify-center text-text-inverse mx-auto mb-2">
                 <svg width="28" height="28" viewBox="0 0 16 16" fill="none">
-                  <path d="M3 4h10v2H3zM3 8h7v2H3zM3 12h10v2H3z" fill="currentColor" opacity="0.9"/>
+                  {/* Blue jar body */}
+                  <rect x="3" y="7" width="10" height="7.5" rx="2" fill="#2563EB"/>
+                  {/* Blue lid slanted open */}
+                  <rect x="3.5" y="3.5" width="8" height="2.2" rx="1" fill="#60A5FA" transform="rotate(-18 7.5 4.6)"/>
+                  {/* Particles */}
+                  <circle cx="5" cy="5.5" r="0.8" fill="#93C5FD" opacity="0.7"/>
+                  <circle cx="8" cy="4.5" r="0.6" fill="#93C5FD" opacity="0.5"/>
+                  <circle cx="10.5" cy="5.8" r="0.7" fill="#93C5FD" opacity="0.4"/>
+                  {/* Nj inside */}
+                  <text x="8" y="12.5" fontFamily="Inter,sans-serif" fontWeight="900" fontSize="4.5" fill="white" textAnchor="middle" opacity="0.9">Nj</text>
                 </svg>
               </div>
               <span className="text-[12px] text-text-secondary font-medium">NefJar</span>

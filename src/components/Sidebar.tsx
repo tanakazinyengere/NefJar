@@ -108,9 +108,16 @@ export default function Sidebar() {
         >
           <div className="w-7 h-7 bg-bg-inverse rounded-lg flex items-center justify-center text-text-inverse">
             <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-              <rect x="3" y="6" width="10" height="8" rx="1.5" stroke="currentColor" strokeWidth="1.2" fill="none"/>
-              <rect x="4.5" y="4" width="7" height="2.5" rx="1" fill="currentColor" opacity="0.8"/>
-              <text x="8" y="12" fontFamily="Inter,sans-serif" fontWeight="900" fontSize="5" fill="currentColor" textAnchor="middle">Nj</text>
+              {/* Jar body */}
+              <rect x="3" y="7" width="10" height="7.5" rx="1.5" stroke="currentColor" strokeWidth="1.2" fill="none"/>
+              {/* Lid slanted open */}
+              <rect x="3.5" y="3.5" width="8" height="2.2" rx="1" fill="currentColor" opacity="0.85" transform="rotate(-12 7.5 4.6)"/>
+              {/* Motion lines */}
+              <line x1="5" y1="6" x2="5" y2="5" stroke="#2563EB" strokeWidth="0.6" strokeLinecap="round" opacity="0.5"/>
+              <line x1="8" y1="5.5" x2="8" y2="4" stroke="#2563EB" strokeWidth="0.6" strokeLinecap="round" opacity="0.7"/>
+              <line x1="11" y1="6" x2="11" y2="5" stroke="#2563EB" strokeWidth="0.6" strokeLinecap="round" opacity="0.5"/>
+              {/* Nj inside */}
+              <text x="8" y="12.5" fontFamily="Inter,sans-serif" fontWeight="900" fontSize="4.5" fill="currentColor" textAnchor="middle">Nj</text>
             </svg>
           </div>
           <span className="text-[15px] font-semibold text-text-primary tracking-tight">

@@ -207,9 +207,14 @@ export default function Explorer() {
                     />
                   </div>
                 ) : response ? (
-                  <pre className="text-[12px] font-mono text-text-secondary whitespace-pre-wrap">
+                  <motion.pre
+                    initial={{ opacity: 0, y: 12, filter: 'blur(4px)' }}
+                    animate={{ opacity: 1, y: 0, filter: 'blur(0px)' }}
+                    transition={{ type: 'spring', stiffness: 200, damping: 20, mass: 0.8 }}
+                    className="text-[12px] font-mono text-text-secondary whitespace-pre-wrap"
+                  >
                     {response}
-                  </pre>
+                  </motion.pre>
                 ) : (
                   <div className="flex items-center justify-center h-full text-[13px] text-text-tertiary">
                     Send a request to see the response

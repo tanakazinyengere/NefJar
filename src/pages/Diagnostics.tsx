@@ -225,8 +225,9 @@ export default function Diagnostics() {
                         )}
                         {check.status === 'passed' && (
                           <motion.div
-                            initial={{ scale: 0 }}
-                            animate={{ scale: 1 }}
+                            initial={{ scale: 0, rotate: -90 }}
+                            animate={{ scale: 1, rotate: 0 }}
+                            transition={{ type: 'spring', stiffness: 500, damping: 25, mass: 0.5 }}
                           >
                             <CheckIcon size={16} className="text-success" />
                           </motion.div>
@@ -235,6 +236,7 @@ export default function Diagnostics() {
                           <motion.div
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
+                            transition={{ type: 'spring', stiffness: 400, damping: 20, mass: 0.6 }}
                           >
                             <WarningIcon size={16} className="text-warning" />
                           </motion.div>
@@ -243,6 +245,7 @@ export default function Diagnostics() {
                           <motion.div
                             initial={{ scale: 0 }}
                             animate={{ scale: 1 }}
+                            transition={{ type: 'spring', stiffness: 400, damping: 20, mass: 0.6 }}
                           >
                             <XIcon size={16} className="text-danger" />
                           </motion.div>

@@ -85,7 +85,7 @@ export default function Connection() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.2 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25, mass: 0.8 }}
               className="space-y-4"
             >
               <p className="text-[13px] text-text-secondary mb-4">Choose how to add your project:</p>
@@ -142,7 +142,7 @@ export default function Connection() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.2 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25, mass: 0.8 }}
             >
               <Card className="p-6">
                 <div className="flex items-center gap-3 mb-5">
@@ -201,7 +201,7 @@ export default function Connection() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.2 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25, mass: 0.8 }}
             >
               <Card className="p-6">
                 <div className="flex items-center gap-3 mb-6">
@@ -261,7 +261,7 @@ export default function Connection() {
               initial={{ opacity: 0, x: 20 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: -20 }}
-              transition={{ duration: 0.2 }}
+              transition={{ type: 'spring', stiffness: 300, damping: 25, mass: 0.8 }}
             >
               <Card className="p-6">
                 <div className="flex items-center gap-3 mb-6">

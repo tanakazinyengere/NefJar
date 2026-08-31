@@ -289,24 +289,41 @@ export default function Simulator() {
                     />
                   </div>
                 ) : result ? (
-                  <div className="space-y-4">
-                    <div>
+                  <motion.div
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.3 }}
+                    className="space-y-4"
+                  >
+                    <motion.div
+                      initial={{ opacity: 0, x: -12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.1 }}
+                    >
                       <span className="text-[11px] font-semibold uppercase tracking-wider text-text-tertiary">Response Time</span>
                       <p className="text-[13px] text-text-primary mt-1">{result.duration}ms</p>
-                    </div>
-                    <div>
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, x: -12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.2 }}
+                    >
                       <span className="text-[11px] font-semibold uppercase tracking-wider text-text-tertiary">Headers</span>
                       <pre className="mt-2 text-[12px] font-mono text-text-secondary bg-bg rounded-lg p-3">
                         {Object.entries(result.scenario.headers).map(([k, v]) => `${k}: ${v}`).join('\n')}
                       </pre>
-                    </div>
-                    <div>
+                    </motion.div>
+                    <motion.div
+                      initial={{ opacity: 0, x: -12 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ type: 'spring', stiffness: 200, damping: 20, delay: 0.3 }}
+                    >
                       <span className="text-[11px] font-semibold uppercase tracking-wider text-text-tertiary">Body</span>
                       <pre className="mt-2 text-[12px] font-mono text-text-secondary bg-bg rounded-lg p-3 whitespace-pre-wrap">
                         {JSON.stringify(result.scenario.response, null, 2)}
                       </pre>
-                    </div>
-                  </div>
+                    </motion.div>
+                  </motion.div>
                 ) : (
                   <div className="flex items-center justify-center h-full text-[13px] text-text-tertiary">
                     Select a scenario and run the simulation
